@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luis Arriaga — Facilitador · Emprendedor · Creador</title>
+<meta name="description" content="Luis Arriaga — Facilitador profesional, emprendedor y creador. Talleres de IA, liderazgo y emprendimiento. Documenta tu realidad. Transforma tu futuro.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Google Analytics (placeholder — reemplaza G-XXXXXXXXXX por tu ID) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<style>
+/* ========================================
+   CSS VARIABLES / PALETA DE COLORES
+   ======================================== */
+:root {
+  --negro: #000000;
+  --negro-alt: #0A0A0A;
+  --cyan: #00D4FF;
+  --morado: #8B5CF6;
+  --blanco: #FFFFFF;
+  --gris: #4A4A4A;
+  --gris-claro: #9CA3AF;
+  --fuente-titulos: 'Orbitron', sans-serif;
+  --fuente-cuerpo: 'Roboto', sans-serif;
+}
+
+/* ========================================
+   RESET & BASE
+   ======================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--fuente-cuerpo);
+  background-color: var(--negro);
+  color: var(--blanco);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ========================================
+   UTILIDADES
+   ======================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-padding {
+  padding: 120px 0;
+}
+
+.section-title {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.section-subtitle {
+  color: var(--gris);
+  font-size: 1.1rem;
+  max-width: 600px;
+}
+
+.section-line {
+  width: 80px;
+  height: 4px;
+  background: var(--cyan);
+  margin-top: 16px;
+}
+
+/* ========================================
+   NAVBAR
+   ======================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 24px 0;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.05em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: color 0.3s;
+}
+
+.navbar-logo:hover {
+  color: var(--cyan);
+}
+
+.navbar-logo .logo-box {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--cyan);
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+}
+
+.navbar-links a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gris-claro);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+  color: var(--cyan);
+}
+
+.navbar-cta {
+  background: var(--morado);
+  color: var(--blanco) !important;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 700 !important;
+  transition: all 0.3s !important;
+}
+
+.navbar-cta:hover {
+  background: var(--cyan) !important;
+  color: var(--negro) !important;
+}
+
+/* Mobile menu */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--blanco);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.navbar-mobile {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--negro);
+  z-index: 99;
+  padding: 40px 24px;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.navbar-mobile.active {
+  display: flex;
+}
+
+.navbar-mobile a {
+  font-family: var(--fuente-titulos);
+  font-size: 2rem;
+  font-weight: 700;
+  transition: color 0.3s;
+}
+
+.navbar-mobile a:hover {
+  color: var(--cyan);
+}
+
+.navbar-mobile .mobile-cta {
+  background: var(--morado);
+  color: var(--blanco);
+  text-align: center;
+  padding: 16px;
+  border-radius: 8px;
+  font-family: var(--fuente-cuerpo);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* ========================================
+   HERO
+   ======================================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 120px 24px 80px;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+.hero h1 {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.hero-role {
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-weight: 500;
+  color: var(--gris);
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  margin-bottom: 32px;
+}
+
+.hero-tagline {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--cyan);
+  margin-bottom: 48px;
+  line-height: 1.3;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--morado);
+  color: var(--blanco);
+  padding: 16px 36px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--cyan);
+  color: var(--negro);
+  transform: scale(1.02);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--blanco);
+  padding: 16px 36px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: 1px solid var(--blanco);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--blanco);
+  color: var(--negro);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gris-claro);
+}
+
+.hero-badge .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22C55E;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+  cursor: pointer;
+  color: var(--gris);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ========================================
+   SOBRE MÍ
+   ======================================== */
+.sobre-mi {
+  background: var(--negro-alt);
+}
+
+.sobre-mi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.sobre-mi-photo {
+  position: relative;
+}
+
+.sobre-mi-photo .photo-frame {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 212, 255, 0.2);
+  padding: 8px;
+  margin: 0 auto;
+}
+
+.sobre-mi-photo .photo-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #1A1A1A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fuente-titulos);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--cyan);
+  border: 2px solid rgba(0, 212, 255, 0.15);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
+}
+
+.sobre-mi-photo .photo-badge {
+  position: absolute;
+  top: 0;
+  left: -10px;
+  background: var(--morado);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transform: rotate(-12deg);
+}
+
+.sobre-mi-text h2 {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.sobre-mi-text .section-line {
+  margin-bottom: 32px;
+}
+
+.sobre-mi-text p {
+  color: #D1D5DB;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.sobre-mi-text p strong {
+  color: var(--blanco);
+}
+
+.sobre-mi-text .highlight {
+  color: var(--cyan);
+  font-weight: 500;
+}
+
+.sobre-mi-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 40px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--cyan);
+  margin-bottom: 4px;
+  transition: color 0.3s;
+}
+
+.stat-item:hover .stat-value {
+  color: var(--blanco);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gris);
+}
+
+/* ========================================
+   TALLERES
+   ======================================== */
+.talleres {
+  background: var(--negro);
+}
+
+.talleres-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.talleres-header .section-subtitle {
+  margin: 0 auto;
+}
+
+.talleres-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.taller-card {
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #050505;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+}
+
+.taller-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.taller-card.featured {
+  border-color: var(--morado);
+  background: #0A0A0A;
+}
+
+.taller-card.featured:hover {
+  border-color: var(--cyan);
+}
+
+.taller-badge {
+  display: inline-block;
+  background: var(--morado);
+  color: var(--blanco);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+  width: fit-content;
+}
+
+.taller-card h3 {
+  font-family: var(--fuente-titulos);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.taller-card > p {
+  color: var(--gris-claro);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  flex-grow: 1;
+}
+
+.taller-details {
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 24px;
+}
+
+.taller-details .detail-text {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gris);
+  margin-bottom: 8px;
+}
+
+.taller-price {
+  font-family: var(--fuente-titulos);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.taller-card.featured .taller-price {
+  color: var(--cyan);
+}
+
+.taller-card .btn-primary,
+.taller-card .btn-secondary {
+  width: 100%;
+  justify-content: center;
+  padding: 14px;
+  font-size: 0.9rem;
+}
+
+.talleres-note {
+  text-align: center;
+  color: var(--gris);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* ========================================
+   TRAYECTORIA
+   ======================================== */
+.trayectoria {
+  background: var(--negro-alt);
+}
+
+.trayectoria-header {
+  margin-bottom: 64px;
+}
+
+.trayectoria-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.trayectoria-item {
+  padding: 40px 32px;
+  background: rgba(0, 0, 0, 0.4);
+  transition: background 0.3s;
+}
+
+.trayectoria-item:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.trayectoria-year {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 16px;
+}
+
+.trayectoria-item h3 {
+  font-family: var(--fuente-titulos);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.trayectoria-item p {
+  color: var(--gris-claro);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.trayectoria-next {
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--cyan);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* ========================================
+   CONTACTO
+   ======================================== */
+.contacto {
+  background: linear-gradient(to bottom, var(--negro), #0D0D1A);
+  position: relative;
+  overflow: hidden;
+}
+
+.contacto-glow {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.contacto-info h2 {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.contacto-tagline {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  color: var(--cyan);
+  margin-bottom: 48px;
+  line-height: 1.3;
+}
+
+.contacto-links {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.contacto-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--gris-claro);
+  transition: color 0.3s;
+}
+
+.contacto-link:hover {
+  color: var(--blanco);
+}
+
+.contacto-link .icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: border-color 0.3s;
+}
+
+.contacto-link:hover .icon-box {
+  border-color: var(--cyan);
+}
+
+.contacto-link .link-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gris);
+}
+
+.contacto-link .link-value {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.contacto-tags {
+  display: flex;
+  gap: 16px;
+  color: var(--gris);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* Formulario */
+.contacto-form {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gris);
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 14px 16px;
+  color: var(--blanco);
+  font-family: var(--fuente-cuerpo);
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--gris);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--cyan);
+}
+
+.form-group textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+.form-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  gap: 16px;
+}
+
+.form-success.active {
+  display: flex;
+}
+
+.form-success .success-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.form-success h3 {
+  font-family: var(--fuente-titulos);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.form-success p {
+  color: var(--gris-claro);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer {
+  background: var(--negro);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 60px 0 40px;
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-brand .logo-box {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--cyan);
+  font-family: var(--fuente-titulos);
+  margin-bottom: 16px;
+}
+
+.footer-brand p {
+  color: var(--gris);
+  font-size: 0.9rem;
+  font-style: italic;
+  max-width: 300px;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 48px;
+}
+
+.footer-nav-col h4 {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--blanco);
+  margin-bottom: 16px;
+}
+
+.footer-nav-col a {
+  display: block;
+  color: var(--gris);
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  transition: color 0.3s;
+}
+
+.footer-nav-col a:hover {
+  color: var(--cyan);
+}
+
+.footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gris);
+}
+
+.footer-bottom a {
+  color: var(--gris);
+  transition: color 0.3s;
+}
+
+.footer-bottom a:hover {
+  color: var(--blanco);
+}
+
+/* ========================================
+   ANIMACIONES (fade-in al scroll)
+   ======================================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 1024px) {
+  .talleres-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .trayectoria-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 80px 0;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .sobre-mi-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    text-align: center;
+  }
+
+  .sobre-mi-photo {
+    order: -1;
+  }
+
+  .sobre-mi-photo .photo-frame {
+    max-width: 240px;
+  }
+
+  .section-line {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sobre-mi-stats {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .trayectoria-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contacto-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .contacto-info {
+    text-align: center;
+  }
+
+  .contacto-tags {
+    justify-content: center;
+  }
+
+  .footer-grid {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-brand .logo-box {
+    margin: 0 auto 16px;
+  }
+
+  .footer-nav {
+    justify-content: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.1rem;
+  }
+
+  .contacto-info h2 {
+    font-size: 2rem;
+  }
+
+  .contacto-tagline {
+    font-size: 1.1rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================================
+     NAVBAR
+     ======================================== -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#" class="navbar-logo">
+      <div class="logo-box">LA</div>
+    </a>
+    <ul class="navbar-links">
+      <li><a href="#sobre-mi">Sobre</a></li>
+      <li><a href="#talleres">Talleres</a></li>
+      <li><a href="#trayectoria">Trayectoria</a></li>
+      <li><a href="#contacto" class="navbar-cta">Ver Talleres</a></li>
+    </ul>
+    <button class="navbar-toggle" id="navbarToggle" aria-label="Menu">
+      ☰
+    </button>
+  </div>
+</nav>
+
+<div class="navbar-mobile" id="navbarMobile">
+  <a href="#sobre-mi" onclick="closeMobile()">Sobre</a>
+  <a href="#talleres" onclick="closeMobile()">Talleres</a>
+  <a href="#trayectoria" onclick="closeMobile()">Trayectoria</a>
+  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+  <a href="#talleres" class="mobile-cta" onclick="closeMobile()">Ver Talleres</a>
+</div>
+
+<!-- ========================================
+     HERO
+     ======================================== -->
+<section class="hero" id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-content fade-in">
+    <h1>LUIS ARRIAGA</h1>
+    <p class="hero-role">Facilitador · Emprendedor · Creador</p>
+    <p class="hero-tagline">Documenta tu realidad. Transforma tu futuro.</p>
+    <div class="hero-buttons">
+      <a href="#talleres" class="btn-primary">
+        Ver Talleres →
+      </a>
+      <a href="#sobre-mi" class="btn-secondary">
+        Conóceme
+      </a>
+    </div>
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Talleres presenciales CDMX + Online
+    </div>
+  </div>
+  <div class="hero-scroll" onclick="document.getElementById('sobre-mi').scrollIntoView({behavior: 'smooth'})">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linelinejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ========================================
+     SOBRE MÍ
+     ======================================== -->
+<section class="sobre-mi section-padding" id="sobre-mi">
+  <div class="container">
+    <div class="sobre-mi-grid">
+      <div class="sobre-mi-photo fade-in">
+        <div class="photo-frame">
+          <div class="photo-placeholder">LA</div>
+        </div>
+        <div class="photo-badge">Real Tech</div>
+      </div>
+      <div class="sobre-mi-text fade-in">
+        <h2>Sobre mí</h2>
+        <div class="section-line"></div>
+        <p><strong>[Escribe aquí tu hook potente — 2-3 líneas sobre quién eres y qué haces]</strong></p>
+        <p>[Tu trayectoria como facilitador y emprendedor — Dope MX, Arca Point, luarca.ttt. 4-5 líneas]</p>
+        <p>[Convergencia actual — por qué todo converge en soyluisarca. 3-4 líneas]</p>
+        <p class="highlight">[Cierre con llamado sutil — 2 líneas]</p>
+        <div class="sobre-mi-stats">
+          <div class="stat-item">
+            <div class="stat-value">12+</div>
+            <div class="stat-label">Años facilitando</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">4</div>
+            <div class="stat-label">Negocios construidos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">Práctico</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     TALLERES
+     ======================================== -->
+<section class="talleres section-padding" id="talleres">
+  <div class="container">
+    <div class="talleres-header fade-in">
+      <h2 class="section-title">Talleres</h2>
+      <p class="section-subtitle">De 0 a 100. Sin rodeos. Herramientas listas para usar.</p>
+    </div>
+    <div class="talleres-grid">
+      <!-- Taller 1 — Featured -->
+      <div class="taller-card featured fade-in">
+        <span class="taller-badge">Flagship</span>
+        <h3>0 a 100 con IA</h3>
+        <p>Domina las herramientas de IA que están cambiando el juego. Prompts, automatizaciones y flujos de trabajo listos para implementar.</p>
+        <div class="taller-details">
+          <p class="detail-text">2 días · Presencial CDMX + Online · Cupo limitado</p>
+          <p class="taller-price">$3,500 MXN <span style="font-size:0.8rem;color:var(--gris)">(early bird)</span></p>
+        </div>
+        <button class="btn-primary" onclick="scrollToContact()">Reservar lugar</button>
+      </div>
+      <!-- Taller 2 -->
+      <div class="taller-card fade-in">
+        <h3>Liderazgo con Protocolo ZERO</h3>
+        <p>Un sistema de liderazgo basado en decisiones claras, cero excusas y ejecución obsesiva. Sin teoría vacía.</p>
+        <div class="taller-details">
+          <p class="detail-text">1 día · Presencial CDMX + Online · Cupo limitado</p>
+          <p class="taller-price">Próximamente</p>
+        </div>
+        <button class="btn-secondary" onclick="scrollToContact()">Notifícame</button>
+      </div>
+      <!-- Taller 3 -->
+      <div class="taller-card fade-in">
+        <h3>Emprendimiento sin Recursos</h3>
+        <p>Cómo construir un negocio funcional con presupuesto mínimo. Lo que nadie te enseña en las escuelas de negocios.</p>
+        <div class="taller-details">
+          <p class="detail-text">1 día · Presencial CDMX + Online · Cupo limitado</p>
+          <p class="taller-price">Próximamente</p>
+        </div>
+        <button class="btn-secondary" onclick="scrollToContact()">Notifícame</button>
+      </div>
+    </div>
+    <p class="talleres-note fade-in">"Todos los talleres incluyen material descargable. Sin relleno."</p>
+  </div>
+</section>
+
+<!-- ========================================
+     TRAYECTORIA
+     ======================================== -->
+<section class="trayectoria section-padding" id="trayectoria">
+  <div class="container">
+    <div class="trayectoria-header fade-in">
+      <h2 class="section-title">Trayectoria</h2>
+      <p class="section-subtitle">He construido en diferentes industrias. Cada negocio me enseñó algo que ahora converge en mi trabajo.</p>
+    </div>
+    <div class="trayectoria-grid">
+      <div class="trayectoria-item fade-in">
+        <div class="trayectoria-year">2012-2015</div>
+        <h3>Dope MX</h3>
+        <p>[Placeholder: Mi primer negocio. Aprendí a...]</p>
+      </div>
+      <div class="trayectoria-item fade-in">
+        <div class="trayectoria-year">2016-2019</div>
+        <h3>Arca Point</h3>
+        <p>[Placeholder: Construí...]</p>
+      </div>
+      <div class="trayectoria-item fade-in">
+        <div class="trayectoria-year">2020-2022</div>
+        <h3>luarca.ttt</h3>
+        <p>[Placeholder: Exploré...]</p>
+      </div>
+      <div class="trayectoria-item fade-in">
+        <div class="trayectoria-year">2023-Hoy</div>
+        <h3>Quantumraiz</h3>
+        <p>[Placeholder: Un proyecto de...]</p>
+      </div>
+    </div>
+    <div class="trayectoria-next fade-in">
+      <span>Y lo que viene next...</span>
+      <span>→</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     CONTACTO
+     ======================================== -->
+<section class="contacto section-padding" id="contacto">
+  <div class="contacto-glow"></div>
+  <div class="container">
+    <div class="contacto-grid">
+      <div class="contacto-info fade-in">
+        <h2>¿Listo para subir al tren?</h2>
+        <p class="contacto-tagline">Documenta tu realidad. Transforma tu futuro.</p>
+        <div class="contacto-links">
+          <a href="mailto:hola@soyluisarca.com" class="contacto-link">
+            <div class="icon-box">✉</div>
+            <div>
+              <div class="link-label">Email</div>
+              <div class="link-value">hola@soyluisarca.com</div>
+            </div>
+          </a>
+          <a href="https://instagram.com/soyluisarca" target="_blank" class="contacto-link">
+            <div class="icon-box">📷</div>
+            <div>
+              <div class="link-label">Instagram</div>
+              <div class="link-value">@soyluisarca</div>
+            </div>
+          </a>
+        </div>
+        <div class="contacto-tags">
+          <span>CDMX</span>
+          <span>·</span>
+          <span>Online</span>
+          <span>·</span>
+          <span>Sin rodeos</span>
+        </div>
+      </div>
+      <div class="contacto-form fade-in">
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="tu@email.com" required>
+          </div>
+          <div class="form-group">
+            <label>Mensaje</label>
+            <textarea placeholder="¿Qué te trae por aquí?" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+            Enviar Mensaje
+          </button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">⚡</div>
+          <h3>¡Mensaje enviado!</h3>
+          <p>Luis se pondrá en contacto pronto.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================
+     FOOTER
+     ======================================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-box">LA</div>
+        <p>"Documenta tu realidad. Transforma tu futuro."</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-nav-col">
+          <h4>Navegación</h4>
+          <a href="#sobre-mi">Sobre</a>
+          <a href="#talleres">Talleres</a>
+          <a href="#trayectoria">Trayectoria</a>
+        </div>
+        <div class="footer-nav-col">
+          <h4>Contacto</h4>
+          <a href="https://instagram.com/soyluisarca" target="_blank">Instagram</a>
+          <a href="#">YouTube</a>
+          <a href="mailto:hola@soyluisarca.com">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Luis Arriaga · soyluisarca.com</span>
+      <div>
+        <a href="#">Privacidad</a>
+        <a href="#" style="margin-left:16px;">Términos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========================================
+     JAVASCRIPT
+     ======================================== -->
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// Mobile menu toggle
+const toggle = document.getElementById('navbarToggle');
+const mobile = document.getElementById('navbarMobile');
+
+toggle.addEventListener('click', () => {
+  mobile.classList.toggle('active');
+  toggle.textContent = mobile.classList.contains('active') ? '✕' : '☰';
+});
+
+function closeMobile() {
+  mobile.classList.remove('active');
+  toggle.textContent = '☰';
+}
+
+// Scroll to contact
+function scrollToContact() {
+  document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').classList.add('active');
+  setTimeout(() => {
+    document.getElementById('contactForm').style.display = 'block';
+    document.getElementById('formSuccess').classList.remove('active');
+    document.getElementById('contactForm').reset();
+  }, 5000);
+}
+
+// Fade-in on scroll
+const fadeElements = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+fadeElements.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
