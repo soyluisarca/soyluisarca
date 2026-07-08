@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luis Arriaga — Facilitador · Emprendedor · Creador</title>
-<meta name="description" content="Luis Arriaga — Facilitador profesional, emprendedor y creador. Talleres de IA, liderazgo y emprendimiento. Documenta tu realidad. Transforma tu futuro.">
+<title>LUIS ARCA — Facilitador · Emprendedor · Creador</title>
+<meta name="description" content="Luis Arriaga — Facilitador profesional, emprendedor y creador. AI Blueprint Day y 1:1 Setup con IA agentica (Hermes Agent).">
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -175,6 +175,20 @@ img {
   color: var(--cyan);
 }
 
+.navbar-contacto {
+  border: 1px solid var(--gris);
+  color: var(--blanco) !important;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: 600 !important;
+  transition: all 0.3s !important;
+}
+
+.navbar-contacto:hover {
+  border-color: var(--cyan) !important;
+  color: var(--cyan) !important;
+}
+
 .navbar-cta {
   background: var(--morado);
   color: var(--blanco) !important;
@@ -270,6 +284,7 @@ img {
   position: relative;
   z-index: 1;
   max-width: 900px;
+  text-align: center;
 }
 
 .hero h1 {
@@ -279,6 +294,7 @@ img {
   letter-spacing: -0.03em;
   line-height: 1;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .hero-role {
@@ -413,8 +429,9 @@ img {
   width: 100%;
   max-width: 380px;
   aspect-ratio: 1;
-  border-radius: 50%;
-  border: 2px solid rgba(0, 212, 255, 0.2);
+  border-radius: 4px; /* CUADRADA, no circular */
+  overflow: hidden;
+  border: 2px solid rgba(139, 92, 246, 0.3); /* morado neón */
   padding: 8px;
   margin: 0 auto;
 }
@@ -422,7 +439,7 @@ img {
 .sobre-mi-photo .photo-placeholder {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 0; /* CUADRADA */
   background: #1A1A1A;
   display: flex;
   align-items: center;
@@ -431,14 +448,14 @@ img {
   font-size: 3rem;
   font-weight: 700;
   color: var(--cyan);
-  border: 2px solid rgba(0, 212, 255, 0.15);
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
+  border: 2px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
 }
 
 .sobre-mi-photo .photo-badge {
   position: absolute;
-  top: 0;
-  left: -10px;
+  bottom: 0;
+  right: -10px;
   background: var(--morado);
   padding: 12px 16px;
   border-radius: 8px;
@@ -446,7 +463,6 @@ img {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  transform: rotate(-12deg);
 }
 
 .sobre-mi-text h2 {
@@ -485,8 +501,8 @@ img {
   margin-top: 40px;
 }
 
-.stat-item {
-  text-align: center;
+.stat-item:hover .stat-value {
+  color: var(--blanco);
 }
 
 .stat-value {
@@ -496,10 +512,6 @@ img {
   color: var(--cyan);
   margin-bottom: 4px;
   transition: color 0.3s;
-}
-
-.stat-item:hover .stat-value {
-  color: var(--blanco);
 }
 
 .stat-label {
@@ -781,6 +793,49 @@ img {
   font-weight: 500;
 }
 
+.contacto-links-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.social-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.social-link:hover {
+  border-color: var(--cyan);
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.social-icon {
+  font-size: 1.8rem;
+  transition: transform 0.3s;
+}
+
+.social-link:hover .social-icon {
+  transform: scale(1.1);
+}
+
+.social-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gris);
+}
+
 .contacto-tags {
   display: flex;
   gap: 16px;
@@ -789,6 +844,7 @@ img {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
+  margin-top: 24px;
 }
 
 /* Formulario */
@@ -992,86 +1048,94 @@ img {
   .trayectoria-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .contacto-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
   .section-padding {
     padding: 80px 0;
   }
-
+  
   .navbar-links {
     display: none;
   }
-
+  
   .navbar-toggle {
     display: block;
   }
-
+  
   .sobre-mi-grid {
     grid-template-columns: 1fr;
     gap: 48px;
     text-align: center;
   }
-
+  
   .sobre-mi-photo {
     order: -1;
   }
-
+  
   .sobre-mi-photo .photo-frame {
     max-width: 240px;
   }
-
+  
   .section-line {
     margin-left: auto;
     margin-right: auto;
   }
-
+  
   .sobre-mi-stats {
     grid-template-columns: 1fr;
     gap: 24px;
   }
-
+  
   .trayectoria-grid {
     grid-template-columns: 1fr;
   }
-
+  
   .contacto-grid {
     grid-template-columns: 1fr;
     gap: 48px;
   }
-
+  
   .contacto-info {
     text-align: center;
   }
-
+  
+  .contacto-links-grid {
+    grid-template-columns: 1fr;
+  }
+  
   .contacto-tags {
     justify-content: center;
   }
-
+  
   .footer-grid {
     flex-direction: column;
     text-align: center;
   }
-
+  
   .footer-brand .logo-box {
     margin: 0 auto 16px;
   }
-
+  
   .footer-nav {
     justify-content: center;
   }
-
+  
   .footer-bottom {
     flex-direction: column;
     gap: 16px;
     text-align: center;
   }
-
+  
   .hero-buttons {
     flex-direction: column;
     align-items: center;
   }
-
+  
   .btn-primary, .btn-secondary {
     width: 100%;
     max-width: 300px;
@@ -1083,15 +1147,15 @@ img {
   .hero h1 {
     font-size: 3rem;
   }
-
+  
   .hero-tagline {
     font-size: 1.1rem;
   }
-
+  
   .contacto-info h2 {
     font-size: 2rem;
   }
-
+  
   .contacto-tagline {
     font-size: 1.1rem;
   }
@@ -1109,10 +1173,11 @@ img {
       <div class="logo-box">LA</div>
     </a>
     <ul class="navbar-links">
-      <li><a href="#sobre-mi">Sobre</a></li>
-      <li><a href="#talleres">Talleres</a></li>
-      <li><a href="#trayectoria">Trayectoria</a></li>
-      <li><a href="#contacto" class="navbar-cta">Ver Talleres</a></li>
+      <li><a href="#sobre-mi" data-i18n="nav_about">Sobre</a></li>
+      <li><a href="#productos" data-i18n="nav_products">Productos</a></li>
+      <li><a href="#trayectoria" data-i18n="nav_trajectory">Trayectoria</a></li>
+      <li><a href="#contacto" class="navbar-contacto" data-i18n="nav_contact">Contacto</a></li>
+      <li><a href="#productos" class="navbar-cta" data-i18n="nav_cta">Ver Talleres</a></li>
     </ul>
     <button class="navbar-toggle" id="navbarToggle" aria-label="Menu">
       ☰
@@ -1121,11 +1186,11 @@ img {
 </nav>
 
 <div class="navbar-mobile" id="navbarMobile">
-  <a href="#sobre-mi" onclick="closeMobile()">Sobre</a>
-  <a href="#talleres" onclick="closeMobile()">Talleres</a>
-  <a href="#trayectoria" onclick="closeMobile()">Trayectoria</a>
-  <a href="#contacto" onclick="closeMobile()">Contacto</a>
-  <a href="#talleres" class="mobile-cta" onclick="closeMobile()">Ver Talleres</a>
+  <a href="#sobre-mi" onclick="closeMobile()" data-i18n="nav_about">Sobre</a>
+  <a href="#productos" onclick="closeMobile()" data-i18n="nav_products">Productos</a>
+  <a href="#trayectoria" onclick="closeMobile()" data-i18n="nav_trajectory">Trayectoria</a>
+  <a href="#contacto" onclick="closeMobile()" data-i18n="nav_contact">Contacto</a>
+  <a href="#productos" class="mobile-cta" onclick="closeMobile()" data-i18n="nav_cta">Ver Talleres</a>
 </div>
 
 <!-- ========================================
@@ -1134,56 +1199,50 @@ img {
 <section class="hero" id="hero">
   <div class="hero-glow"></div>
   <div class="hero-content fade-in">
-    <h1>LUIS ARRIAGA</h1>
-    <p class="hero-role">Facilitador · Emprendedor · Creador</p>
-    <p class="hero-tagline">Documenta tu realidad. Transforma tu futuro.</p>
+    <h1>LUIS ARCA</h1>
+    <p class="hero-tagline" data-i18n="hero_tagline">Liderazgo Inteligente.</p>
     <div class="hero-buttons">
-      <a href="#talleres" class="btn-primary">
+      <a href="#productos" class="btn-primary" data-i18n="hero_btn1">
         Ver Talleres →
       </a>
-      <a href="#sobre-mi" class="btn-secondary">
+      <a href="#sobre-mi" class="btn-secondary" data-i18n="hero_btn2">
         Conóceme
       </a>
     </div>
     <div class="hero-badge">
       <span class="dot"></span>
-      Talleres presenciales CDMX + Online
+      <span data-i18n="hero_badge">Talleres presenciales CDMX + Online</span>
     </div>
   </div>
   <div class="hero-scroll" onclick="document.getElementById('sobre-mi').scrollIntoView({behavior: 'smooth'})">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linelinejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
   </div>
 </section>
 
 <!-- ========================================
-     SOBRE MÍ
-     ======================================== -->
+   SOBRE MÍ
+   ======================================== -->
 <section class="sobre-mi section-padding" id="sobre-mi">
   <div class="container">
     <div class="sobre-mi-grid">
       <div class="sobre-mi-photo fade-in">
         <div class="photo-frame">
-          <div class="photo-placeholder">LA</div>
+          <img src="assets/foto-perfil.png" alt="Luis Arriaga" style="width:100%;height:100%;object-fit:cover;border-radius:0;">
         </div>
         <div class="photo-badge">Real Tech</div>
       </div>
       <div class="sobre-mi-text fade-in">
-        <h2>Sobre mí</h2>
+        <h2 data-i18n="about_title">Sobre mí</h2>
         <div class="section-line"></div>
-        <p><strong>A los 21, coach y facilitador.<br>
-        A los 23, network marketing y bienes raíces.<br>
-        A los 24, Dope MX.<br>
-        A los 26, Arca Point.<br>
-        A los 28, volví a cero. Aprendí a tatuar. Practicaba yoga. Creaba contenido.</strong></p>
-        <p>Puedo ser muchas cosas. Y en todas me he podido desempeñar. Pero ninguna me llenaba como facilitar.</p>
-        <p>Hace unos meses, gracias a mis agentes de IA — Koi, Nexus, y otras herramientas — tuve un momento de claridad brutal: lo que me hace único no es cuántos negocios he construido. Es mi experiencia como facilitador. Es lo que me llena y de hecho en lo que tengo mayor experiencia.</p>
-        <p>Así nació soyluisarca.</p>
-        <p>Hoy convergio todo: 10+ años de facilitación, 4 negocios en industrias diferentes, y las herramientas de IA que están cambiando el juego. Mi misión: que emprendedores como tú suban de nivel con herramientas que funcionan de verdad.</p>
-        <p>Soy alguien que se ha caído muchas veces y se ha levantado las mismas.</p>
-        <p class="highlight">¿De quién depende? Ya lo sabes. Procede.</p>
+        
+        <p data-i18n="about_paragraph_1">He construido 4 negocios y trabajado en 7 industrias distintas. En todas ellas me pude desempeñar bien, pero ninguno me dio lo que encontré cuando empecé a trabajar directamente con personas: crear experiencias, facilitar procesos y acompañar transformaciones.</p>
+        <p data-i18n="about_paragraph_2">Eso sí me llenó.</p>
+        <p data-i18n="about_paragraph_3">Hace unos meses, con ayuda de herramientas de IA que yo mismo construí, tuve un momento de claridad brutal: lo que me hace único es mi experiencia como facilitador. Ahí está mi mayor expertise —y ahí está lo que más disfruto hacer.</p>
+        <p data-i18n="about_paragraph_4">Así nació soyluisarca.</p>
+        <p data-i18n="about_paragraph_5">Hoy hago converger todo: mi carrera como facilitador, mi experiencia en industrias diferentes y las herramientas de IA que están cambiando el juego. Mi misión: que emprendedores como tú suban de nivel con herramientas que funcionan de verdad.</p>
         <div class="sobre-mi-stats">
           <div class="stat-item">
-            <div class="stat-value">10+</div>
+            <div class="stat-value">4</div>
             <div class="stat-label">Años facilitando</div>
           </div>
           <div class="stat-item">
@@ -1201,48 +1260,49 @@ img {
 </section>
 
 <!-- ========================================
-     TALLERES
-     ======================================== -->
-<section class="talleres section-padding" id="talleres">
+   PRODUCTOS
+   ======================================== -->
+<section class="productos section-padding" id="productos">
   <div class="container">
-    <div class="talleres-header fade-in">
-      <h2 class="section-title">Talleres</h2>
-      <p class="section-subtitle">De 0 a 100. Sin rodeos. Herramientas listas para usar.</p>
+    <div class="productos-header fade-in">
+      <h2 class="section-title" data-i18n="products_title">Productos</h2>
+      <p class="section-subtitle" data-i18n="products_subtitle">Experiencias diseñadas para impulsar tu proyecto con IA.</p>
     </div>
-    <div class="talleres-grid">
-      <!-- Taller 1 — Featured -->
-      <div class="taller-card featured fade-in">
-        <span class="taller-badge">Flagship</span>
-        <h3>0 a 100 con IA</h3>
-        <p>Domina las herramientas de IA que están cambiando el juego. Prompts, automatizaciones y flujos de trabajo listos para implementar.</p>
-        <div class="taller-details">
-          <p class="detail-text">2 días · Presencial CDMX + Online · Cupo limitado</p>
-          <p class="taller-price">$3,500 MXN <span style="font-size:0.8rem;color:var(--gris)">(early bird)</span></p>
+    <div class="productos-grid">
+      <!-- Producto 1 — AI Blueprint Day -->
+      <div class="producto-card fade-in" data-product="AI Blueprint Day">
+        <span class="producto-badge" data-i18n="product1_badge">Productivo</span>
+        <h3 data-i18n="product1_title">AI Blueprint Day</h3>
+        <p data-i18n="product1_desc">Experiencia que conecta emprendedores que buscan potenciar sus proyectos con herramientas de IA.</p>
+        <p style="color:var(--gris-claro);font-size:0.9rem;margin-top:8px;" data-i18n="product1_detail_2">6 horas en 4 bloques: (1) Mentalidad, (2) Branding y Marketing, (3) Ecosistema IA, (4) IA Agentica + Stack Propio.</p>
+        <div class="producto-details">
+          <p class="detail-text" data-i18n="product1_detail_1">📅 6 horas (1 día intensivo)</p>
+          <p class="detail-text" data-i18n="product1_detail_2">🧠 Mentalidad y visión</p>
+          <p class="detail-text" data-i18n="product1_detail_3">📈 Branding y Marketing</p>
+          <p class="detail-text" data-i18n="product1_detail_4">🤖 Ecosistema IA (30+ herramientas)</p>
+          <p class="detail-text" data-i18n="product1_detail_5">⚡ IA Agentica y stack propio</p>
+          <p class="detail-text" data-i18n="product1_detail_6">🎥 Grabación + comunidad</p>
         </div>
-        <button class="btn-primary" onclick="scrollToContact()">Reservar lugar</button>
+        <a href="#contacto" class="btn-primary" data-i18n="product1_btn" style="justify-content:center;">Reserva tu lugar →</a>
+        <p style="text-align:center;font-size:0.7rem;color:var(--gris);margin-top:8px;" data-i18n="product1_price">Inversión: [Consultar]</p>
       </div>
-      <!-- Taller 2 -->
-      <div class="taller-card fade-in">
-        <h3>Liderazgo con Protocolo ZERO</h3>
-        <p>Un sistema de liderazgo basado en decisiones claras, cero excusas y ejecución obsesiva. Sin teoría vacía.</p>
-        <div class="taller-details">
-          <p class="detail-text">1 día · Presencial CDMX + Online · Cupo limitado</p>
-          <p class="taller-price">Próximamente</p>
+      
+      <!-- Producto 2 — 1:1 Setup -->
+      <div class="producto-card featured fade-in" data-product="1:1 Setup">
+        <span class="producto-badge" data-i18n="product2_badge">Siguiente Paso</span>
+        <h3 data-i18n="product2_title">1:1 Setup</h3>
+        <p data-i18n="product2_desc">Luis les construye su setup de agentes con Hermes Agent listo para usar (implementación real en el caso del cliente).</p>
+        <div class="producto-details">
+          <p class="detail-text" data-i18n="product2_detail_1">🎯 Implementación completa de stack</p>
+          <p class="detail-text" data-i18n="product2_detail_2">⚡ Proceso de 24 horas</p>
+          <p class="detail-text" data-i18n="product2_detail_3">🔧 Pruebas y verificación</p>
+          <p class="detail-text" data-i18n="product2_detail_4">📊 Monitoreo y optimización</p>
+          <p class="detail-text" data-i18n="product2_detail_5">📚 Documentación y entrenamiento</p>
         </div>
-        <button class="btn-secondary" onclick="scrollToContact()">Notifícame</button>
-      </div>
-      <!-- Taller 3 -->
-      <div class="taller-card fade-in">
-        <h3>Emprendimiento sin Recursos</h3>
-        <p>Cómo construir un negocio funcional con presupuesto mínimo. Lo que nadie te enseña en las escuelas de negocios.</p>
-        <div class="taller-details">
-          <p class="detail-text">1 día · Presencial CDMX + Online · Cupo limitado</p>
-          <p class="taller-price">Próximamente</p>
-        </div>
-        <button class="btn-secondary" onclick="scrollToContact()">Notifícame</button>
+        <a href="#contacto" class="btn-secondary" data-i18n="product2_btn" style="justify-content:center;">Agenda tu 1:1 →</a>
+        <p style="text-align:center;font-size:0.7rem;color:var(--gris);margin-top:8px;" data-i18n="product2_price">Inversión: [Consultar]</p>
       </div>
     </div>
-    <p class="talleres-note fade-in">"Todos los talleres incluyen material descargable. Sin relleno."</p>
   </div>
 </section>
 
@@ -1252,33 +1312,33 @@ img {
 <section class="trayectoria section-padding" id="trayectoria">
   <div class="container">
     <div class="trayectoria-header fade-in">
-      <h2 class="section-title">Trayectoria</h2>
-      <p class="section-subtitle">He construido en diferentes industrias. Cada negocio me enseñó algo que ahora converge en mi trabajo.</p>
+      <h2 class="section-title" data-i18n="trajectory_title">Trayectoria</h2>
+      <p class="section-subtitle" data-i18n="trajectory_subtitle">He construido en diferentes industrias. Cada negocio me enseñó algo que ahora converge en mi trabajo.</p>
     </div>
     <div class="trayectoria-grid">
       <div class="trayectoria-item fade-in">
-        <div class="trayectoria-year">2012-2015</div>
-        <h3>Dope MX</h3>
-        <p>[Placeholder: Mi primer negocio. Aprendí a...]</p>
+        <div class="trayectoria-year" data-i18n="traj_1_year">2017-2018</div>
+        <h3 data-i18n="traj_1_title">Real Estate + Network Marketing</h3>
+        <p data-i18n="traj_1_text">Coldwell Banker, ACN y Flash Mobile. Mi primer contacto con ventas, persistencia y construcción de redes. Aprendí que el dinero sigue a la conexión humana, no al título.</p>
       </div>
       <div class="trayectoria-item fade-in">
-        <div class="trayectoria-year">2016-2019</div>
-        <h3>Arca Point</h3>
-        <p>[Placeholder: Construí...]</p>
+        <div class="trayectoria-year" data-i18n="traj_2_year">2018-2019</div>
+        <h3 data-i18n="traj_2_title">Dope MX</h3>
+        <p data-i18n="traj_2_text">Mi primer negocio propio: un smoke shop online que armé desde cero con WordPress. Ahí aprendí a construir relaciones con aliados, a forjar reputación, a levantar capital y —sobre todo— a liderar un equipo. Mi primera escuela de negocios en tiempo real, sin manual de instrucciones.</p>
       </div>
       <div class="trayectoria-item fade-in">
-        <div class="trayectoria-year">2020-2022</div>
-        <h3>luarca.ttt</h3>
-        <p>[Placeholder: Exploré...]</p>
+        <div class="trayectoria-year" data-i18n="traj_3_year">2020-2022</div>
+        <h3 data-i18n="traj_3_title">Arca Point + Marina Yunuem</h3>
+        <p data-i18n="traj_3_text">Arca Point era mi negocio de renta de bicicletas en Bacalar. Marina Yunuem era el club de playa donde trabajaba —y donde aprendí la mayoría de lo que sé sobre operación turística: restaurante, hostal, eventos. Precisamente porque trabajaba ahí pude comenzar Arca Point. Una me dio el conocimiento; la otra, la oportunidad de aplicarlo.</p>
       </div>
       <div class="trayectoria-item fade-in">
-        <div class="trayectoria-year">2023-Hoy</div>
-        <h3>Quantumraiz</h3>
-        <p>[Placeholder: Un proyecto de...]</p>
+        <div class="trayectoria-year" data-i18n="traj_4_year">2025</div>
+        <h3 data-i18n="traj_4_title">luarca.ttt</h3>
+        <p data-i18n="traj_4_text">luarca.ttt es la evidencia de que siempre estamos a tiempo de reclamar lo que dejamos atrás. De niño tomaba clases de óleo y dibujo, pero mis papás dejaron de apoyar esa vena creativa y yo dejé de creer que podía. Hasta que un día decidí retomar el pincel —esta vez sobre piel. Cada trazo me recuerda que el detalle, la paciencia y la confianza construyen arte. Y también negocios.</p>
       </div>
     </div>
     <div class="trayectoria-next fade-in">
-      <span>Y lo que viene next...</span>
+      <span data-i18n="traj_next">Todo lo que construí converge aquí.</span>
       <span>→</span>
     </div>
   </div>
@@ -1292,14 +1352,14 @@ img {
   <div class="container">
     <div class="contacto-grid">
       <div class="contacto-info fade-in">
-        <h2>¿Listo para subir al tren?</h2>
-        <p class="contacto-tagline">Documenta tu realidad. Transforma tu futuro.</p>
+        <h2 data-i18n="contact_title">Liderazgo Inteligente.</h2>
+        <p class="contacto-tagline" data-i18n="contact_tagline">De la intención a la ejecución.</p>
         <div class="contacto-links">
-          <a href="mailto:hola@soyluisarca.com" class="contacto-link">
+          <a href="mailto:soyluisarca@gmail.com" class="contacto-link">
             <div class="icon-box">✉</div>
             <div>
               <div class="link-label">Email</div>
-              <div class="link-value">hola@soyluisarca.com</div>
+              <div class="link-value">soyluisarca@gmail.com</div>
             </div>
           </a>
           <a href="https://instagram.com/soyluisarca" target="_blank" class="contacto-link">
@@ -1310,12 +1370,35 @@ img {
             </div>
           </a>
         </div>
+        
+        <!-- BOTONES DE REDES SOCIALES AÑADIDOS -->
+        <div class="contacto-links-grid">
+          <a href="https://x.com/Soyluisarca" target="_blank" class="social-link">
+            <span class="social-icon">𝕏</span>
+            <span class="social-label">X</span>
+          </a>
+          <a href="https://youtube.com/@soyluisarca" target="_blank" class="social-link">
+            <span class="social-icon">▶</span>
+            <span class="social-label">YouTube</span>
+          </a>
+          <a href="https://tiktok.com/@soyluisarca" target="_blank" class="social-link">
+            <span class="social-icon">♪</span>
+            <span class="social-label">TikTok</span>
+          </a>
+          <a href="https://instagram.com/soyluisarca" target="_blank" class="social-link">
+            <span class="social-icon">📷</span>
+            <span class="social-label">Instagram</span>
+          </a>
+          <a href="https://facebook.com/Soyluisarca" target="_blank" class="social-link">
+            <span class="social-icon">f</span>
+            <span class="social-label">Facebook</span>
+          </a>
+        </div>
+
         <div class="contacto-tags">
           <span>CDMX</span>
           <span>·</span>
           <span>Online</span>
-          <span>·</span>
-          <span>Sin rodeos</span>
         </div>
       </div>
       <div class="contacto-form fade-in">
@@ -1354,20 +1437,23 @@ img {
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="logo-box">LA</div>
-        <p>"Documenta tu realidad. Transforma tu futuro."</p>
+        <p>De la intención a la ejecución.</p>
       </div>
       <div class="footer-nav">
         <div class="footer-nav-col">
-          <h4>Navegación</h4>
-          <a href="#sobre-mi">Sobre</a>
-          <a href="#talleres">Talleres</a>
-          <a href="#trayectoria">Trayectoria</a>
+          <h4 data-i18n="footer_nav_title">Navegación</h4>
+          <a href="#sobre-mi" data-i18n="nav_about">Sobre</a>
+          <a href="#productos" data-i18n="nav_products">Productos</a>
+          <a href="#trayectoria" data-i18n="nav_trajectory">Trayectoria</a>
         </div>
         <div class="footer-nav-col">
           <h4>Contacto</h4>
           <a href="https://instagram.com/soyluisarca" target="_blank">Instagram</a>
-          <a href="#">YouTube</a>
-          <a href="mailto:hola@soyluisarca.com">Email</a>
+          <a href="https://youtube.com/@soyluisarca" target="_blank">YouTube</a>
+          <a href="https://x.com/Soyluisarca" target="_blank">X</a>
+          <a href="https://tiktok.com/@soyluisarca" target="_blank">TikTok</a>
+          <a href="https://facebook.com/Soyluisarca" target="_blank">Facebook</a>
+<a href="mailto:soyluisarca@gmail.com">Email</a>
         </div>
       </div>
     </div>
@@ -1384,59 +1470,383 @@ img {
 <!-- ========================================
      JAVASCRIPT
      ======================================== -->
+<!-- ========================================
+     JS I18N Y LENGUAJE
+     ======================================== -->
 <script>
-// Navbar scroll effect
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 20) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
+// Traducciones - Edita con tu contenido
+const I18N = {
+  es: {
+    // NAVBAR
+    "nav_about": "Sobre",
+    "nav_products": "Productos",
+    "nav_trajectory": "Trayectoria",
+    "nav_contact": "Contacto",
+    "nav_cta": "Ver Productos",
+    
+    // HERO
+    "hero_title": "LUIS ARCA",
+    "hero_tagline": "Liderazgo Inteligente",
+    "hero_btn1": "Ver Productos",
+    "hero_btn2": "Conóceme",
+    "hero_badge": "Productos presenciales CDMX + Online",
+    
+    // SOBRE MÍ
+    "about_title": "Sobre mí",
+    "about_paragraph_1": "He construido 4 negocios y trabajado en 7 industrias distintas. En todas ellas me pude desempeñar bien, pero ninguno me dio lo que encontré cuando empecé a trabajar directamente con personas: crear experiencias, facilitar procesos y acompañar transformaciones.",
+    "about_paragraph_2": "Eso sí me llenó.",
+    "about_paragraph_3": "Hace unos meses, con ayuda de herramientas de IA que yo mismo construí, tuve un momento de claridad brutal: lo que me hace único es mi experiencia como facilitador. Ahí está mi mayor expertise —y ahí está lo que más disfruto hacer.",
+    "about_paragraph_4": "Así nació soyluisarca.",
+    "about_paragraph_5": "Hoy hago converger todo: mi carrera como facilitador, mi experiencia en industrias diferentes y las herramientas de IA que están cambiando el juego. Mi misión: que emprendedores como tú suban de nivel con herramientas que funcionan de verdad.",
+    "stat_years": "Años facilitando",
+    "stat_businesses": "Negocios construidos",
+    "stat_practical": "Práctico",
+    
+    // PRODUCTOS (antes TALLERES)
+    "products_title": "Productos",
+    "products_subtitle": "Experiencias diseñadas para impulsar tu proyecto con IA.",
+    "product1_title": "AI Blueprint Day",
+    "product1_badge": "Productivo",
+    "product1_desc": "Experiencia que conecta emprendedores que buscan potenciar sus proyectos con herramientas de IA.",
+    "product1_detail_1": "6 horas (1 día intensivo)",
+    "product1_detail_2": "🧠 Mentalidad y visión",
+    "product1_detail_3": "📈 Branding y Marketing",
+    "product1_detail_4": "🤖 Ecosistema IA (30+ herramientas)",
+    "product1_detail_5": "⚡ IA Agentica y stack propio",
+    "product1_detail_6": "🎥 Grabación + comunidad",
+    "product1_btn": "Reserva tu lugar →",
+    "product1_price": "Inversión: [Consultar]",
+    "product2_title": "1:1 Setup",
+    "product2_badge": "Siguiente Paso",
+    "product2_desc": "Luis les construye su setup de agentes con Hermes Agent listo para usar (implementación real en el caso del cliente).",
+    "product2_detail_1": "🎯 Implementación completa de stack",
+    "product2_detail_2": "⚡ Proceso de 24 horas",
+    "product2_detail_3": "🔧 Pruebas y verificación",
+    "product2_detail_4": "📊 Monitoreo y optimización",
+    "product2_detail_5": "📚 Documentación y entrenamiento",
+    "product2_btn": "Agenda tu 1:1 →",
+    "product2_price": "Inversión: [Consultar]",
+    
+    // TRAYECTORIA
+    "trajectory_title": "Trayectoria",
+    "trajectory_subtitle": "He construido en diferentes industrias. Cada negocio me enseñó algo que ahora converge en mi trabajo.",
+    "traj_1_year": "2017-2018",
+    "traj_1_title": "Real Estate + Network Marketing",
+    "traj_1_text": "Coldwell Banker, ACN y Flash Mobile. Mi primer contacto con ventas, persistencia y construcción de redes. Aprendí que el dinero sigue a la conexión humana, no al título.",
+    "traj_2_year": "2018-2019",
+    "traj_2_title": "Dope MX",
+    "traj_2_text": "Mi primer negocio propio: un smoke shop online que armé desde cero con WordPress. Ahí aprendí a construir relaciones con aliados, a forjar reputación, a levantar capital y —sobre todo— a liderar un equipo. Mi primera escuela de negocios en tiempo real, sin manual de instrucciones.",
+    "traj_3_year": "2020-2022",
+    "traj_3_title": "Arca Point + Marina Yunuem",
+    "traj_3_text": "Arca Point era mi negocio de renta de bicicletas en Bacalar. Marina Yunuem era el club de playa donde trabajaba —y donde aprendí la mayoría de lo que sé sobre operación turística: restaurante, hostal, eventos. Precisamente porque trabajaba ahí pude comenzar Arca Point. Una me dio el conocimiento; la otra, la oportunidad de aplicarlo.",
+    "traj_4_year": "2025",
+    "traj_4_title": "luarca.ttt",
+    "traj_4_text": "luarca.ttt es la evidencia de que siempre estamos a tiempo de reclamar lo que dejamos atrás. De niño tomaba clases de óleo y dibujo, pero mis papás dejaron de apoyar esa vena creativa y yo dejé de creer que podía. Hasta que un día decidí retomar el pincel —esta vez sobre piel. Cada trazo me recuerda que el detalle, la paciencia y la confianza construyen arte. Y también negocios.",
+    "traj_next": "Todo lo que construí converge aquí.",
+    
+    // CONTACTO
+    "contact_title": "Liderazgo Inteligente.",
+    "contact_tagline": "De la intención a la ejecución.",
+    "contact_name_label": "Nombre",
+    "contact_email_label": "Email",
+    "contact_message_label": "Mensaje",
+    "contact_btn": "Enviar Mensaje",
+    "contact_success_title": "¡Mensaje enviado!",
+    "contact_success_text": "Luis se pondrá en contacto pronto.",
+    
+    // FOOTER
+    "footer_about": "De la intención a la ejecución.",
+    "footer_nav_title": "Navegación",
+    "footer_contact_title": "Contacto",
+    "footer_bottom": "© 2026 Luis Arriaga · soyluisarca.com",
+    
+    // UX
+    "toggle_lang_es": "ES",
+    "toggle_lang_en": "EN"
+  },
+  en: {
+    // NAVBAR
+    "nav_about": "About",
+    "nav_products": "Products",
+    "nav_trajectory": "Trajectory",
+    "nav_contact": "Contact",
+    "nav_cta": "View Products",
+    
+    // HERO
+    "hero_title": "LUIS ARCA",
+    "hero_tagline": "Smart Leadership",
+    "hero_btn1": "View Products",
+    "hero_btn2": "Meet Me",
+    "hero_badge": "In-person products CDMX + Online",
+    
+    // SOBRE MÍ
+    "about_title": "About me",
+    "about_paragraph_1": "I have built 4 businesses and worked in 7 different industries. In all of them I was able to perform well, but none gave me what I found when I started working directly with people: creating experiences, facilitating processes and accompanying transformations.",
+    "about_paragraph_2": "That's what filled me up.",
+    "about_paragraph_3": "A few months ago, with the help of AI tools I built myself, I had a brutal moment of clarity: what makes me unique is my experience as a facilitator. That's my greatest expertise — and that's what I enjoy doing the most.",
+    "about_paragraph_4": "That's how soyluisarca was born.",
+    "about_paragraph_5": "Today I make it all converge: my career as a facilitator, my experience in different industries and the AI tools that are changing the game. My mission: for entrepreneurs like you to level up with tools that really work.",
+    "stat_years": "Years facilitating",
+    "stat_businesses": "Businesses built",
+    "stat_practical": "100% Practical",
+    
+    // PRODUCTOS (antes TALLERES)
+    "products_title": "Products",
+    "products_subtitle": "Experiences designed to power your project with AI.",
+    "product1_title": "AI Blueprint Day",
+    "product1_badge": "Productive",
+    "product1_desc": "Experience that connects entrepreneurs seeking to empower their projects with AI tools.",
+    "product1_detail_1": "6 hours (1 intensive day)",
+    "product1_detail_2": "🧠 Mindset and vision",
+    "product1_detail_3": "📈 Branding and Marketing",
+    "product1_detail_4": "🤖 AI Ecosystem (30+ tools)",
+    "product1_detail_5": "⚡ AI Agentic and personal stack",
+    "product1_detail_6": "🎥 Recording + community",
+    "product1_btn": "Book your spot →",
+    "product1_price": "Investment: [TBD]",
+    "product2_title": "1:1 Setup",
+    "product2_badge": "Next step",
+    "product2_desc": "Luis builds their agent setup with ready-to-use Hermes Agent (real implementation in the client case).",
+    "product2_detail_1": "🎯 Complete stack implementation",
+    "product2_detail_2": "⚡ 24-hour process",
+    "product2_detail_3": "🔧 Tests and verification",
+    "product2_detail_4": "📊 Monitoring and optimization",
+    "product2_detail_5": "📚 Documentation and training",
+    "product2_btn": "Book your 1:1 →",
+    "product2_price": "Investment: [TBD]",
+    
+    // TRAYECTORIA (EN)
+    "trajectory_title": "Trajectory",
+    "trajectory_subtitle": "I have built across different industries. Each business taught me something that now converges in my work.",
+    "traj_1_year": "2017-2018",
+    "traj_1_title": "Real Estate + Network Marketing",
+    "traj_1_text": "Coldwell Banker, ACN and Flash Mobile. My first contact with sales, persistence and network building. I learned that money follows human connection, not the title.",
+    "traj_2_year": "2018-2019",
+    "traj_2_title": "Dope MX",
+    "traj_2_text": "My first own business: an online smoke shop I built from scratch with WordPress. There I learned to build relationships with partners, forge reputation, raise capital and —above all— lead a team. My first real-time business school, no instruction manual.",
+    "traj_3_year": "2020-2022",
+    "traj_3_title": "Arca Point + Marina Yunuem",
+    "traj_3_text": "Arca Point was my bike rental business in Bacalar. Marina Yunuem was the beach club where I worked —and where I learned most of what I know about tourism operations: restaurant, hostel, events. Precisely because I worked there I could start Arca Point. One gave me the knowledge; the other, the opportunity to apply it.",
+    "traj_4_year": "2025",
+    "traj_4_title": "luarca.ttt",
+    "traj_4_text": "luarca.ttt is the proof that we are always on time to reclaim what we left behind. As a child I took oil and drawing classes, but my parents stopped supporting that creative vein and I stopped believing I could. Until one day I decided to pick up the brush again —this time on skin. Each stroke reminds me that detail, patience and trust build art. And also businesses.",
+    "traj_next": "Everything I've built converges here.",
+    
+    // CONTACTO
+    "contact_title": "Smart Leadership.",
+    "contact_tagline": "From intention to execution.",
+    "contact_name_label": "Name",
+    "contact_email_label": "Email",
+    "contact_message_label": "Message",
+    "contact_btn": "Send Message",
+    "contact_success_title": "Message sent!",
+    "contact_success_text": "Luis will be in touch soon.",
+    
+    // FOOTER
+    "footer_about": "From intention to execution.",
+    "footer_nav_title": "Navigation",
+    "footer_contact_title": "Contact",
+    "footer_bottom": "© 2026 Luis Arriaga · soyluisarca.com",
+    
+    // UX
+    "toggle_lang_es": "ES",
+    "toggle_lang_en": "EN"
   }
-});
+};
 
-// Mobile menu toggle
-const toggle = document.getElementById('navbarToggle');
-const mobile = document.getElementById('navbarMobile');
+// Detectar idioma al cargar (prioridad: ?lang > referrer > localStorage > EN)
+function detectLanguage() {
+  // ?lang= override
+  const urlParams = new URLSearchParams(window.location.search);
+  const paramLang = urlParams.get('lang');
+  if (paramLang === 'es' || paramLang === 'en') return paramLang;
 
-toggle.addEventListener('click', () => {
-  mobile.classList.toggle('active');
-  toggle.textContent = mobile.classList.contains('active') ? '✕' : '☰';
-});
+  // Referrer
+  const ref = document.referrer || '';
+  if (ref.includes('x.com') || ref.includes('twitter.com')) return 'en';
+  if (ref.includes('instagram.com') || ref.includes('youtube.com') || ref.includes('tiktok.com')) return 'es';
 
-function closeMobile() {
-  mobile.classList.remove('active');
-  toggle.textContent = '☰';
+  // LocalStorage persistido
+  const saved = localStorage.getItem('lang');
+  if (saved === 'es' || saved === 'en') return saved;
+
+  // Por defecto
+  return 'en';
 }
 
-// Scroll to contact
-function scrollToContact() {
-  document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
-}
+// Aplicar idioma
+function applyLang(lang) {
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
 
-// Form submit
-function handleSubmit(e) {
-  e.preventDefault();
-  document.getElementById('contactForm').style.display = 'none';
-  document.getElementById('formSuccess').classList.add('active');
-  setTimeout(() => {
-    document.getElementById('contactForm').style.display = 'block';
-    document.getElementById('formSuccess').classList.remove('active');
-    document.getElementById('contactForm').reset();
-  }, 5000);
-}
+  // Forzar actualización del navbar toggle si existe
+  const toggleEl = document.getElementById('langToggle');
+  if (toggleEl) toggleEl.textContent = lang === 'es' ? 'EN' : 'ES';
 
-// Fade-in on scroll
-const fadeElements = document.querySelectorAll('.fade-in');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+  // Recorrer todos los elementos con data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (I18N[lang] && I18N[lang][key]) {
+      // Si el destino es input/textarea, poner placeholder o value
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        if (el.hasAttribute('placeholder')) el.setAttribute('placeholder', I18N[lang][key]);
+        else if (el.hasAttribute('value')) el.setAttribute('value', I18N[lang][key]);
+      } else if (el.tagName === 'LABEL') {
+        // Si tiene textContent, usar texto directo
+        el.textContent = I18N[lang][key];
+      } else {
+        // Normal: innerHTML preserva botones/anuncios
+        el.innerHTML = I18N[lang][key];
+      }
     }
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-fadeElements.forEach(el => observer.observe(el));
+  // Evaluar HTML dinámico para etiquetas y selectores
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (I18N[lang] && I18N[lang][key]) {
+      el.setAttribute('placeholder', I18N[lang][key]);
+    }
+  });
+}
+
+// Inicializar toggle de idioma (navbar superior derecha)
+function initLangToggle() {
+  const html = document.documentElement;
+  const currentLang = html.lang || 'en';
+  const toggleText = currentLang === 'es' ? 'EN' : 'ES';
+
+  const toggleBtn = document.createElement('button');
+  toggleBtn.id = 'langToggle';
+  toggleBtn.className = 'navbar-lang-toggle';
+  toggleBtn.textContent = toggleText;
+  toggleBtn.style.cssText = `
+    background: transparent;
+    border: 1px solid var(--gris);
+    color: var(--blanco);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-left: 20px;
+  `;
+
+  toggleBtn.onmouseenter = () => {
+    toggleBtn.style.borderColor = 'var(--cyan)';
+    toggleBtn.style.color = 'var(--cyan)';
+  };
+  toggleBtn.onmouseleave = () => {
+    toggleBtn.style.borderColor = 'var(--gris)';
+    toggleBtn.style.color = 'var(--blanco)';
+  };
+
+  toggleBtn.onclick = () => {
+    const newLang = currentLang === 'es' ? 'en' : 'es';
+    applyLang(newLang);
+    window.location.reload(); // Para consistencia: al cambiar, volver a cargar para asegurar mejor comportamiento del navegador
+  };
+
+  const navbarLinks = document.querySelector('.navbar-links');
+  if (navbarLinks) {
+    navbarLinks.appendChild(toggleBtn);
+  }
+}
+
+// Función para el envío del formulario
+function setupFormSubmission() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  // Clave fija del usuario (Luis la genera en web3forms.com)
+  const WEB3FORMS_KEY = '21f35b37-a5b4-4f6b-9f0c-fff0ad49b568';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const lang = document.documentElement.lang || 'en';
+    formData.append('lang', lang);
+
+    // Agregar subject basado en idioma y/o producto seleccionado
+    let subject = `Nuevo lead [${lang.toUpperCase()}]`;
+    const productSection = document.querySelector('[data-product]');
+    if (productSection) {
+      const productName = productSection.getAttribute('data-product');
+      if (productName) {
+        subject = `Nuevo lead [${lang.toUpperCase()}] - ${productName}`;
+      }
+    }
+    formData.append('subject', subject);
+
+    // Mostrar estado de carga
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = lang === 'es' ? 'Enviando...' : 'Sending...';
+    btn.disabled = true;
+
+    try {
+      // Enviar a Web3Forms
+      const response = await fetch(`https://api.web3forms.com/submit`, {
+        method: 'POST',
+        body: formData
+      });
+
+      if (response.ok) {
+        // Mostrar éxito
+        document.getElementById('contactForm').style.display = 'none';
+        document.getElementById('formSuccess').classList.add('active');
+        form.reset();
+      } else {
+        // Manejar error
+        alert(lang === 'es'
+          ? 'Hubo un error al enviar el mensaje. Por favor intenta de nuevo.'
+          : 'There was an error sending the message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error enviando formulario:', error);
+      alert(lang === 'es'
+        ? 'Hubo un error de conexión. Verifica tu internet e intenta de nuevo.'
+        : 'Connection error. Check your internet and try again.');
+    } finally {
+      // Restaurar botón
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
+  });
+}
+
+// Inicialización al cargar DOM
+function init() {
+  const lang = detectLanguage();
+  applyLang(lang);
+  initLangToggle();
+  setupFormSubmission();
+
+  // Navigation links servicios
+  document.querySelectorAll('.navbar-links a, .navbar-mobile a, .footer-nav a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      link.addEventListener('click', () => {
+        const targetId = href.substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          setTimeout(() => window.scrollTo({ top: target.offsetTop, behavior: 'smooth' }), 100);
+        }
+      });
+    }
+  });
+}
+
+// Iniciar cuando el DOM esté listo
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
 </script>
 
 </body>
