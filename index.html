@@ -1834,7 +1834,7 @@ const I18N = {
     "modal1_q1": "¿A qué se dedica tu negocio?",
     "modal1_q2": "¿Cuál es el proceso que más tiempo te quita hoy y quieres automatizar?",
     "modal1_q3": "¿Qué herramientas (software/CRMs) usas actualmente en tu día a día?",
-    "modal1_btn": "Agendar en Cal.com →",
+    "modal1_btn": "Enviar solicitud →",
     "modal1_close": "Cerrar",
     
     // FOOTER
@@ -1937,7 +1937,7 @@ const I18N = {
     "modal1_q1": "What does your business do?",
     "modal1_q2": "Which process eats most of your time today that you want to automate?",
     "modal1_q3": "Which tools (software/CRMs) do you use day to day?",
-    "modal1_btn": "Book on Cal.com →",
+    "modal1_btn": "Send request →",
     "modal1_close": "Close",
     
     // FOOTER
@@ -2045,8 +2045,7 @@ function setupFormSubmission() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  // Clave fija del usuario (Luis la genera en web3forms.com)
-  const WEB3FORMS_KEY = '21f35b37-a5b4-4f6b-9f0c-fff0ad49b568';
+  // Clave Web3Forms compartida (declarada globalmente arriba)
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -2104,7 +2103,7 @@ function setupFormSubmission() {
 }
 
 // Modal 1:1 — Diagnóstico de Automatización
-const CALENDAR_URL = 'https://cal.com/luisarca/automatizacion'; // <-- reemplaza por tu link real (Cal.com o Calendly)
+const WEB3FORMS_KEY = '21f35b37-a5b4-4f6b-9f0c-fff0ad49b568'; // compartida contacto + modal 1:1
 
 // Smart header: oculta al scroll down, reaparece al scroll up (siempre visible en el top)
 function setupSmartHeader() {
@@ -2163,11 +2162,42 @@ document.addEventListener('click', (e) => {
 function setupDiagnosticoForm() {
   const form = document.getElementById('diagnosticoForm');
   if (!form) return;
-  form.addEventListener('submit', (e) => {
+  const WEB3FORMS_KEY = '21f35b37-a5b4-4f6b-9f0c-fff0ad49b568';
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    // Redirección óptima en UX: el usuario ya calificó, lo enviamos directo a agendar.
-    window.open(CALENDAR_URL, '_blank');
-    closeDiagnosticoModal();
+    const formData = new FormData(form);
+    const lang = document.documentElement.lang || 'en';
+    formData.append('access_key', WEB3FORMS_KEY);
+    formData.append('lang', lang);
+    formData.append('subject', `[1:1 Setup] Nueva solicitud de diagnóstico [${lang.toUpperCase()}]`);
+    formData.append('from_name', 'Sitio soyluisarca');
+
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = lang === 'es' ? 'Enviando...' : 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      if (response.ok) {
+        form.reset();
+        closeDiagnosticoModal();
+        // Confirmación ligera sin romper el flujo
+        alert(lang === 'es'
+          ? '¡Solicitud enviada! Te escribo a tu correo para agendar.'
+          : 'Request sent! I\'ll email you to schedule.');
+      } else {
+        alert(lang === 'es' ? 'Hubo un error. Inténtalo de nuevo.' : 'Something went wrong. Try again.');
+      }
+    } catch (err) {
+      alert(lang === 'es' ? 'Hubo un error de red.' : 'Network error.');
+    } finally {
+      btn.textContent = originalText;
+      btn.disabled = false;
+    }
   });
 }
 
@@ -2225,7 +2255,7 @@ if (document.readyState === 'loading') {
         <label data-i18n="modal1_q3">¿Qué herramientas (software/CRMs) usas actualmente en tu día a día?</label>
         <textarea name="herramientas" rows="2" required></textarea>
       </div>
-      <button type="submit" class="btn-primary" style="width:100%;justify-content:center;" data-i18n="modal1_btn">Agendar en Cal.com →</button>
+      <button type="submit" class="btn-primary" style="width:100%;justify-content:center;" data-i18n="modal1_btn">Enviar solicitud →</button>
     </form>
   </div>
 </div>
