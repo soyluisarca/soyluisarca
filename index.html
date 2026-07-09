@@ -502,20 +502,12 @@ body {
   margin: 0 auto;
 }
 
-.sobre-mi-photo .photo-placeholder {
+.sobre-mi-photo .photo-img {
   width: 100%;
   height: 100%;
-  border-radius: 0; /* CUADRADA */
-  background: rgba(139, 92, 246, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--fuente-titulos);
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--cyan);
-  border: 2px solid rgba(139, 92, 246, 0.2);
-  box-shadow: 0 0 30px rgba(139, 92, 246, 0.15);
+  object-fit: cover;
+  border-radius: 0; /* CUADRADA, igual que el frame */
+  display: block;
 }
 
 .sobre-mi-photo .photo-badge {
@@ -1412,7 +1404,7 @@ body {
     <div class="sobre-mi-grid">
       <div class="sobre-mi-photo fade-in">
         <div class="photo-frame">
-          <div class="photo-placeholder">LA</div>
+          <img src="assets/foto-perfil.png" alt="Luis Arriaga" class="photo-img">
         </div>
         <div class="photo-badge">Real Tech</div>
       </div>
