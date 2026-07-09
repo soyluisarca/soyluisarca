@@ -152,7 +152,13 @@ body {
   padding: 20px 0;
   background: #000000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  transition: padding 0.3s ease;
+  transition: padding 0.3s ease, transform 0.3s ease-in-out;
+  will-change: transform;
+}
+
+/* Smart header: oculto al hacer scroll hacia abajo */
+.navbar.nav-hidden {
+  transform: translateY(-100%);
 }
 
 .navbar.scrolled {
@@ -2103,10 +2109,43 @@ function setupFormSubmission() {
 // Modal 1:1 — Diagnóstico de Automatización
 const CALENDAR_URL = 'https://cal.com/luisarca/automatizacion'; // <-- reemplaza por tu link real (Cal.com o Calendly)
 
+// Smart header: oculta al scroll down, reaparece al scroll up (siempre visible en el top)
+function setupSmartHeader() {
+  const nav = document.getElementById('navbar');
+  if (!nav) return;
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  function update() {
+    const y = window.scrollY;
+    const goingDown = y > lastY;
+    const atTop = y < 80;
+    // Visible si: estamos arriba, o vamos hacia arriba. Oculto solo si bajamos y no estamos arriba.
+    if (atTop || !goingDown) {
+      nav.classList.remove('nav-hidden');
+    } else if (y > 120) {
+      nav.classList.add('nav-hidden');
+    }
+    lastY = y;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+  update();
+}
+
 function openDiagnosticoModal() {
   const modal = document.getElementById('diagnosticoModal');
   if (modal) modal.classList.add('active');
   document.body.style.overflow = 'hidden';
+  // Asegura que el navbar no tape el botón de cierre del modal
+  const nav = document.getElementById('navbar');
+  if (nav) nav.classList.remove('nav-hidden');
 }
 
 function closeDiagnosticoModal() {
@@ -2142,6 +2181,7 @@ function init() {
   initLangToggle();
   setupFormSubmission();
   setupDiagnosticoForm();
+  setupSmartHeader();
 
   // Navigation links servicios
   document.querySelectorAll('.navbar-links a, .navbar-mobile a, .footer-nav a').forEach(link => {
