@@ -181,15 +181,11 @@ body {
   color: var(--cyan);
 }
 
-.navbar-logo .logo-box {
+.navbar-logo .logo-box-img {
   width: 40px;
   height: 40px;
-  border: 2px solid var(--cyan);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
-  color: var(--cyan);
+  object-fit: contain;
+  display: block;
 }
 
 .navbar-links {
@@ -1113,17 +1109,11 @@ body {
   margin-bottom: 40px;
 }
 
-.footer-brand .logo-box {
+.footer-brand .logo-box-img {
   width: 48px;
   height: 48px;
-  border: 2px solid var(--cyan);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--cyan);
-  font-family: var(--fuente-titulos);
+  object-fit: contain;
+  display: block;
   margin-bottom: 16px;
 }
 
@@ -1347,7 +1337,7 @@ body {
 <nav class="navbar" id="navbar">
   <div class="container">
     <a href="#" class="navbar-logo">
-      <div class="logo-box">LA</div>
+      <img class="logo-box-img" src="assets/merkaba-logo.png" alt="LA">
     </a>
     <ul class="navbar-links">
       <li><a href="#sobre-mi" data-i18n="nav_about">Sobre</a></li>
@@ -1587,25 +1577,25 @@ body {
       <div class="contacto-form fade-in">
         <form id="contactForm" onsubmit="handleSubmit(event)">
           <div class="form-group">
-            <label>Nombre</label>
-            <input type="text" placeholder="Tu nombre" required>
+            <label data-i18n="contact_name_label">Nombre</label>
+            <input type="text" data-i18n-placeholder="contact_ph_nombre" placeholder="Tu nombre" required>
           </div>
           <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="tu@email.com" required>
+            <label data-i18n="contact_email_label">Email</label>
+            <input type="email" data-i18n-placeholder="contact_ph_email" placeholder="tu@email.com" required>
           </div>
           <div class="form-group">
-            <label>Mensaje</label>
-            <textarea placeholder="¿Qué te trae por aquí?" rows="4" required></textarea>
+            <label data-i18n="contact_message_label">Mensaje</label>
+            <textarea data-i18n-placeholder="contact_ph_mensaje" placeholder="¿Qué te trae por aquí?" rows="4" required></textarea>
           </div>
-          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;" data-i18n="contact_btn">
             Enviar Mensaje
           </button>
         </form>
         <div class="form-success" id="formSuccess">
           <div class="success-icon">⚡</div>
-          <h3>¡Mensaje enviado!</h3>
-          <p>Luis se pondrá en contacto pronto.</p>
+          <h3 data-i18n="contact_success_title">¡Mensaje enviado!</h3>
+          <p data-i18n="contact_success_text">Luis se pondrá en contacto pronto.</p>
         </div>
       </div>
     </div>
@@ -1621,8 +1611,8 @@ body {
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo-box">LA</div>
-        <p>De la intención a la ejecución.</p>
+        <img class="logo-box-img" src="assets/merkaba-logo.png" alt="LA">
+        <p data-i18n="footer_about">De la idea al agente</p>
       </div>
       <div class="footer-nav">
         <div class="footer-nav-col">
@@ -1672,6 +1662,7 @@ const I18N = {
     // HERO
     "hero_title": "LUIS ARCA",
     "hero_tagline": "Liderazgo Inteligente",
+    "hero_subtagline": "De la idea al agente",
     "hero_btn1": "Ver Productos",
     "hero_btn2": "Conóceme",
     "hero_badge": "Productos presenciales CDMX + Online",
@@ -1731,16 +1722,19 @@ const I18N = {
     
     // CONTACTO
     "contact_title": "Liderazgo Inteligente.",
-    "contact_tagline": "De la intención a la ejecución.",
+    "contact_tagline": "De la idea al agente",
     "contact_name_label": "Nombre",
     "contact_email_label": "Email",
     "contact_message_label": "Mensaje",
+    "contact_ph_nombre": "Tu nombre",
+    "contact_ph_email": "tu@email.com",
+    "contact_ph_mensaje": "¿Qué te trae por aquí?",
     "contact_btn": "Enviar Mensaje",
     "contact_success_title": "¡Mensaje enviado!",
     "contact_success_text": "Luis se pondrá en contacto pronto.",
     
     // FOOTER
-    "footer_about": "De la intención a la ejecución.",
+    "footer_about": "De la idea al agente",
     "footer_nav_title": "Navegación",
     "footer_contact_title": "Contacto",
     "footer_bottom": "© 2026 Luis Arriaga · soyluisarca.com",
@@ -1759,7 +1753,8 @@ const I18N = {
     
     // HERO
     "hero_title": "LUIS ARCA",
-    "hero_tagline": "Smart Leadership",
+    "hero_tagline": "Smart Entrepreneurship",
+    "hero_subtagline": "From idea to agent",
     "hero_btn1": "View Products",
     "hero_btn2": "Meet Me",
     "hero_badge": "In-person products CDMX + Online",
@@ -1818,17 +1813,20 @@ const I18N = {
     "traj_next": "Everything I've built converges here.",
     
     // CONTACTO
-    "contact_title": "Smart Leadership.",
-    "contact_tagline": "From intention to execution.",
+    "contact_title": "Smart Entrepreneurship.",
+    "contact_tagline": "From idea to agent",
     "contact_name_label": "Name",
     "contact_email_label": "Email",
     "contact_message_label": "Message",
+    "contact_ph_nombre": "Your name",
+    "contact_ph_email": "you@email.com",
+    "contact_ph_mensaje": "What brings you here?",
     "contact_btn": "Send Message",
     "contact_success_title": "Message sent!",
     "contact_success_text": "Luis will be in touch soon.",
     
     // FOOTER
-    "footer_about": "From intention to execution.",
+    "footer_about": "From idea to agent",
     "footer_nav_title": "Navigation",
     "footer_contact_title": "Contact",
     "footer_bottom": "© 2026 Luis Arriaga · soyluisarca.com",
