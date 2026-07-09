@@ -9,7 +9,7 @@
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
 <!-- Google Analytics (placeholder — reemplaza G-XXXXXXXXXX por tu ID) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -26,14 +26,14 @@
    ======================================== */
 :root {
   --negro: #000000;
-  --negro-alt: #0A0A0A;
-  --cyan: #00E5FF;
-  --morado: #A855F7;
+  --negro-alt: #000000;
+  --cyan: #00D4FF;
+  --morado: #8B5CF6;
   --blanco: #FFFFFF;
   --gris: #4A4A4A;
-  --gris-claro: #9CA3AF;
-  --fuente-titulos: 'Orbitron', sans-serif;
-  --fuente-cuerpo: 'Roboto', sans-serif;
+  --gris-claro: #4A4A4A;
+  --fuente-titulos: 'Space Grotesk', sans-serif;
+  --fuente-cuerpo: 'Inter', sans-serif;
 }
 
 /* ========================================
@@ -47,7 +47,13 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 110px;
   font-size: 16px;
+}
+
+/* PRIORIDAD 0: toda sección anclada debe quedar por debajo del navbar fijo */
+#sobre-mi, #productos, #trayectoria, #contacto, #hero {
+  scroll-margin-top: 110px;
 }
 
 body {
@@ -99,7 +105,7 @@ img {
 .section-line {
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, #00E5FF, #A855F7);
+  background: linear-gradient(90deg, #00D4FF, #8B5CF6);
   border-radius: 2px;
   margin-top: 16px;
 }
@@ -109,7 +115,7 @@ img {
   width: 100%;
   height: 1px;
   border: none;
-  background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.55), rgba(168, 85, 247, 0.55), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.55), rgba(139, 92, 246, 0.55), transparent);
 }
 
 /* ========================================
@@ -120,7 +126,7 @@ img {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 1000;
   padding: 24px 0;
   transition: all 0.3s ease;
 }
@@ -196,7 +202,7 @@ img {
 .navbar-contacto:hover {
   border-color: var(--cyan) !important;
   color: var(--cyan) !important;
-  box-shadow: 0 0 22px rgba(0, 229, 255, 0.35) !important;
+  box-shadow: 0 0 22px rgba(0, 212, 255, 0.35) !important;
 }
 
 .navbar-cta {
@@ -211,7 +217,29 @@ img {
 .navbar-cta:hover {
   background: var(--cyan) !important;
   color: var(--negro) !important;
-  box-shadow: 0 0 26px rgba(0, 229, 255, 0.5) !important;
+  box-shadow: 0 0 26px rgba(0, 212, 255, 0.5) !important;
+}
+
+/* Toggle de idioma: pill outline consistente con CONTACT, sin competir con el CTA */
+.navbar-lang-toggle {
+  background: transparent;
+  border: 1px solid var(--gris);
+  color: var(--blanco);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-left: 20px;
+}
+
+.navbar-lang-toggle:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  box-shadow: 0 0 22px rgba(0, 212, 255, 0.35);
 }
 
 /* Mobile menu */
@@ -288,8 +316,8 @@ img {
   width: 900px;
   height: 900px;
   background:
-    radial-gradient(circle at 38% 42%, rgba(0, 229, 255, 0.14) 0%, transparent 55%),
-    radial-gradient(circle at 66% 60%, rgba(168, 85, 247, 0.14) 0%, transparent 55%);
+    radial-gradient(circle at 38% 42%, rgba(0, 212, 255, 0.14) 0%, transparent 55%),
+    radial-gradient(circle at 66% 60%, rgba(139, 92, 246, 0.14) 0%, transparent 55%);
   filter: blur(20px);
   pointer-events: none;
   z-index: 0;
@@ -356,7 +384,7 @@ img {
 .btn-primary:hover {
   background: var(--cyan);
   color: var(--negro);
-  box-shadow: 0 0 28px rgba(0, 229, 255, 0.55);
+  box-shadow: 0 0 28px rgba(0, 212, 255, 0.55);
 }
 
 .btn-secondary {
@@ -399,7 +427,7 @@ img {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #22C55E;
+  background: #00D4FF;
   animation: pulse 2s infinite;
 }
 
@@ -456,7 +484,7 @@ img {
   width: 100%;
   height: 100%;
   border-radius: 0; /* CUADRADA */
-  background: #1A1A1A;
+  background: rgba(139, 92, 246, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -493,7 +521,7 @@ img {
 }
 
 .sobre-mi-text p {
-  color: #D1D5DB;
+  color: #FFFFFF;
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 20px;
@@ -588,8 +616,8 @@ img {
 
 .producto-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(0, 229, 255, 0.35);
-  box-shadow: 0 16px 48px rgba(0, 229, 255, 0.18);
+  border-color: rgba(0, 212, 255, 0.35);
+  box-shadow: 0 16px 48px rgba(0, 212, 255, 0.18);
 }
 
 /* Jerarquía: AI Blueprint Day = ancla low-cost (sutil) */
@@ -601,9 +629,9 @@ img {
 
 /* Jerarquía: 1:1 Setup = premium / exclusivo */
 .producto-card.featured {
-  background: rgba(168, 85, 247, 0.07);
-  border: 1.5px solid rgba(168, 85, 247, 0.55);
-  box-shadow: 0 8px 40px rgba(168, 85, 247, 0.22);
+  background: rgba(139, 92, 246, 0.07);
+  border: 1.5px solid rgba(139, 92, 246, 0.55);
+  box-shadow: 0 8px 40px rgba(139, 92, 246, 0.22);
 }
 
 .producto-card.featured::before {
@@ -612,7 +640,7 @@ img {
   inset: -1px;
   border-radius: 16px;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(0, 229, 255, 0.45), rgba(168, 85, 247, 0.55));
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.45), rgba(139, 92, 246, 0.55));
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -621,8 +649,8 @@ img {
 
 .producto-card.featured:hover {
   transform: translateY(-8px);
-  border-color: rgba(0, 229, 255, 0.6);
-  box-shadow: 0 18px 56px rgba(168, 85, 247, 0.4);
+  border-color: rgba(0, 212, 255, 0.6);
+  box-shadow: 0 18px 56px rgba(139, 92, 246, 0.4);
 }
 
 .producto-badge {
@@ -663,7 +691,7 @@ img {
 
 .producto-details .detail-text {
   font-size: 0.78rem;
-  color: #C7CBD1;
+  color: #FFFFFF;
   line-height: 1.9;
 }
 
@@ -674,101 +702,6 @@ img {
   padding: 14px;
   font-size: 0.9rem;
   margin-top: auto;
-}
-
-.talleres-note {
-
-.taller-card {
-  padding: 40px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #050505;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s;
-}
-
-.taller-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(0, 212, 255, 0.3);
-}
-
-.taller-card.featured {
-  border-color: var(--morado);
-  background: #0A0A0A;
-}
-
-.taller-card.featured:hover {
-  border-color: var(--cyan);
-}
-
-.taller-badge {
-  display: inline-block;
-  background: var(--morado);
-  color: var(--blanco);
-  padding: 4px 12px;
-  border-radius: 4px;
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 24px;
-  width: fit-content;
-}
-
-.taller-card h3 {
-  font-family: var(--fuente-titulos);
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.taller-card > p {
-  color: var(--gris-claro);
-  font-size: 0.9rem;
-  line-height: 1.7;
-  margin-bottom: 32px;
-  flex-grow: 1;
-}
-
-.taller-details {
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  margin-bottom: 24px;
-}
-
-.taller-details .detail-text {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--gris);
-  margin-bottom: 8px;
-}
-
-.taller-price {
-  font-family: var(--fuente-titulos);
-  font-size: 1.3rem;
-  font-weight: 700;
-}
-
-.taller-card.featured .taller-price {
-  color: var(--cyan);
-}
-
-.taller-card .btn-primary,
-.taller-card .btn-secondary {
-  width: 100%;
-  justify-content: center;
-  padding: 14px;
-  font-size: 0.9rem;
-}
-
-.talleres-note {
-  text-align: center;
-  color: var(--gris);
-  font-size: 0.9rem;
-  font-style: italic;
 }
 
 /* ========================================
@@ -783,26 +716,60 @@ img {
 }
 
 .trayectoria-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Línea de tiempo vertical con gradiente cian → morado */
+.trayectoria-grid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 27px;
+  width: 2px;
+  background: linear-gradient(to bottom, #00D4FF, #8B5CF6);
+  border-radius: 2px;
 }
 
 .trayectoria-item {
-  padding: 40px 32px;
-  background: rgba(255, 255, 255, 0.035);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  margin-left: 72px;
+  padding: 32px 36px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  border-radius: 16px;
+  margin-bottom: 32px;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.trayectoria-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Nodo circular sobre la línea de tiempo */
+.trayectoria-item::before {
+  content: "";
+  position: absolute;
+  left: -51px;
+  top: 36px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+  border: 3px solid #000000;
+  box-shadow: 0 0 14px rgba(0, 212, 255, 0.5);
 }
 
 .trayectoria-item:hover {
   background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(0, 229, 255, 0.35);
+  border-color: rgba(0, 212, 255, 0.35);
   transform: translateY(-6px);
-  box-shadow: 0 14px 40px rgba(0, 229, 255, 0.15);
+  box-shadow: 0 14px 40px rgba(0, 212, 255, 0.15);
 }
 
 .trayectoria-year {
@@ -812,6 +779,7 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.15em;
   margin-bottom: 16px;
+  font-family: var(--fuente-titulos);
 }
 
 .trayectoria-item h3 {
@@ -822,7 +790,7 @@ img {
 }
 
 .trayectoria-item p {
-  color: var(--gris-claro);
+  color: #FFFFFF;
   font-size: 0.85rem;
   line-height: 1.7;
 }
@@ -843,7 +811,7 @@ img {
    CONTACTO
    ======================================== */
 .contacto {
-  background: linear-gradient(to bottom, var(--negro), #0D0D1A);
+  background: linear-gradient(to bottom, #000000, rgba(139, 92, 246, 0.08));
   position: relative;
   overflow: hidden;
 }
@@ -855,8 +823,8 @@ img {
   width: 600px;
   height: 600px;
   background:
-    radial-gradient(circle at 70% 70%, rgba(168, 85, 247, 0.12) 0%, transparent 60%),
-    radial-gradient(circle at 30% 90%, rgba(0, 229, 255, 0.08) 0%, transparent 60%);
+    radial-gradient(circle at 70% 70%, rgba(139, 92, 246, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 30% 90%, rgba(0, 212, 255, 0.08) 0%, transparent 60%);
   filter: blur(20px);
   pointer-events: none;
   z-index: 0;
@@ -865,9 +833,20 @@ img {
 .contacto-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 40px;
   position: relative;
   z-index: 1;
+  align-items: start;
+}
+
+.contacto-info {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
 .contacto-info h2 {
@@ -1195,10 +1174,6 @@ img {
     margin-right: auto;
   }
   
-  .trayectoria-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
   .contacto-links-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1242,7 +1217,7 @@ img {
   }
   
   .trayectoria-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
   
   .contacto-grid {
@@ -1396,7 +1371,7 @@ img {
     <div class="sobre-mi-grid">
       <div class="sobre-mi-photo fade-in">
         <div class="photo-frame">
-          <img src="assets/foto-perfil.png" alt="Luis Arriaga" style="width:100%;height:100%;object-fit:cover;border-radius:0;">
+          <div class="photo-placeholder">LA</div>
         </div>
         <div class="photo-badge">Real Tech</div>
       </div>
@@ -1897,29 +1872,6 @@ function initLangToggle() {
   toggleBtn.id = 'langToggle';
   toggleBtn.className = 'navbar-lang-toggle';
   toggleBtn.textContent = toggleText;
-  toggleBtn.style.cssText = `
-    background: transparent;
-    border: 1px solid var(--gris);
-    color: var(--blanco);
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin-left: 20px;
-  `;
-
-  toggleBtn.onmouseenter = () => {
-    toggleBtn.style.borderColor = 'var(--cyan)';
-    toggleBtn.style.color = 'var(--cyan)';
-  };
-  toggleBtn.onmouseleave = () => {
-    toggleBtn.style.borderColor = 'var(--gris)';
-    toggleBtn.style.color = 'var(--blanco)';
-  };
 
   toggleBtn.onclick = () => {
     const newLang = currentLang === 'es' ? 'en' : 'es';
@@ -2011,7 +1963,8 @@ function init() {
         const targetId = href.substring(1);
         const target = document.getElementById(targetId);
         if (target) {
-          setTimeout(() => window.scrollTo({ top: target.offsetTop, behavior: 'smooth' }), 100);
+          const NAV_OFFSET = 110;
+          setTimeout(() => window.scrollTo({ top: target.offsetTop - NAV_OFFSET, behavior: 'smooth' }), 100);
         }
       });
     }
