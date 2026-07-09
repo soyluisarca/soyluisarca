@@ -2162,7 +2162,6 @@ document.addEventListener('click', (e) => {
 function setupDiagnosticoForm() {
   const form = document.getElementById('diagnosticoForm');
   if (!form) return;
-  const WEB3FORMS_KEY = '21f35b37-a5b4-4f6b-9f0c-fff0ad49b568';
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(form);
