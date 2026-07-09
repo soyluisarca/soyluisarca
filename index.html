@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LUIS ARCA — Facilitador · Emprendedor · Creador</title>
-<meta name="description" content="Luis Arriaga — Facilitador profesional, emprendedor y creador. AI Blueprint Day y 1:1 Setup con IA agentica (Hermes Agent).">
+<meta name="description" content="Luis Arca — Facilitador profesional, emprendedor y creador. AI Blueprint Day y 1:1 Setup con IA agentica (Hermes Agent).">
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1327,6 +1327,96 @@ body {
     filter: none !important;
   }
 }
+
+/* ========================================
+   MODAL 1:1 — Diagnóstico de Automatización
+   ======================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 24px;
+}
+.modal-overlay.active {
+  display: flex;
+}
+.modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  background: #0a0a0a;
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  border-radius: 14px;
+  padding: 36px 32px 32px;
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.12);
+  animation: modalPop 0.22s ease-out;
+}
+@keyframes modalPop {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--gris);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.modal-close:hover { color: var(--blanco); }
+.modal-title {
+  font-family: var(--fuente-titulos);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.modal-sub {
+  color: var(--gris-claro);
+  font-size: 0.9rem;
+  margin-bottom: 22px;
+}
+.modal-form .form-group { margin-bottom: 16px; }
+.modal-form label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gris-claro);
+  margin-bottom: 6px;
+}
+.modal-form input,
+.modal-form textarea {
+  width: 100%;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 11px 13px;
+  color: var(--blanco);
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.95rem;
+  resize: vertical;
+}
+.modal-form input:focus,
+.modal-form textarea:focus {
+  outline: none;
+  border-color: var(--cyan);
+}
+.micro-copy {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--gris-claro);
+  margin-top: 16px;
+  line-height: 1.5;
+}
 </style>
 </head>
 <body>
@@ -1394,9 +1484,9 @@ body {
     <div class="sobre-mi-grid">
       <div class="sobre-mi-photo fade-in">
         <div class="photo-frame">
-          <img src="assets/foto-perfil.png" alt="Luis Arriaga" class="photo-img">
+          <img src="assets/foto-perfil.png" alt="Luis Arca" class="photo-img">
         </div>
-        <div class="photo-badge">Real Tech</div>
+        <div class="photo-badge" data-i18n-title="badge_realtch_tooltip" title="Real Tech: mi enfoque donde la tecnología se pone al servicio de resultados humanos reales, no al revés.">Real Tech</div>
       </div>
       <div class="sobre-mi-text fade-in">
         <h2 data-i18n="about_title">Sobre mí</h2>
@@ -1440,7 +1530,7 @@ body {
     <div class="productos-grid">
       <!-- Producto 1 — AI Blueprint Day -->
       <div class="producto-card fade-in" data-product="AI Blueprint Day">
-        <span class="producto-badge" data-i18n="product1_badge">Productivo</span>
+        <span class="producto-badge" data-i18n="product1_badge">Low-Cost</span>
         <h3 data-i18n="product1_title">AI Blueprint Day</h3>
         <p data-i18n="product1_desc">Experiencia que conecta emprendedores que buscan potenciar sus proyectos con herramientas de IA.</p>
         <p style="color:var(--gris-claro);font-size:0.9rem;margin-top:8px;" data-i18n="product1_detail_2">6 horas en 4 bloques: (1) Mentalidad, (2) Branding y Marketing, (3) Ecosistema IA, (4) IA Agentica + Stack Propio.</p>
@@ -1468,7 +1558,8 @@ body {
           <p class="detail-text" data-i18n="product2_detail_4">📊 Monitoreo y optimización</p>
           <p class="detail-text" data-i18n="product2_detail_5">📚 Documentación y entrenamiento</p>
         </div>
-        <a href="#contacto" class="btn-secondary" data-i18n="product2_btn" style="justify-content:center;">Agenda tu 1:1 →</a>
+        <button type="button" class="btn-secondary" data-i18n="product2_btn" style="justify-content:center;width:100%;" onclick="openDiagnosticoModal()">Agenda tu 1:1 →</button>
+        <p class="micro-copy" data-i18n="product2_microcopy">Llamada de 20 min por Zoom. Analizamos tu operación actual y vemos qué procesos delegar a un agente.</p>
         <p style="text-align:center;font-size:0.7rem;color:var(--gris);margin-top:8px;" data-i18n="product2_price">Inversión: [Consultar]</p>
       </div>
     </div>
@@ -1505,7 +1596,7 @@ body {
       <div class="trayectoria-item fade-in">
         <div class="trayectoria-year" data-i18n="traj_4_year">2025</div>
         <h3 data-i18n="traj_4_title">luarca.ttt</h3>
-        <p data-i18n="traj_4_text">luarca.ttt es la evidencia de que siempre estamos a tiempo de reclamar lo que dejamos atrás. De niño tomaba clases de óleo y dibujo, pero mis papás dejaron de apoyar esa vena creativa y yo dejé de creer que podía. Hasta que un día decidí retomar el pincel —esta vez sobre piel. Cada trazo me recuerda que el detalle, la paciencia y la confianza construyen arte. Y también negocios.</p>
+        <p data-i18n="traj_4_text">luarca.ttt es la prueba de que siempre estamos a tiempo de reclamar lo que dejamos atrás. De niño tomaba clases de óleo y dibujo, pero mis papás dejaron de apoyar esa vena creativa y yo dejé de creer que podía. Hasta que un día decidí retomar el pincel —esta vez sobre piel. Esa disciplina de trazo milimétrico, paciencia y precisión sobre piel es exactamente la misma que aplico hoy al diseñar arquitecturas de software limpias, automatizaciones robustas y agentes de IA sin errores: un sistema bien trazado no falla en la línea 4.073.</p>
       </div>
     </div>
     <div class="trayectoria-next fade-in">
@@ -1633,7 +1724,7 @@ body {
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Luis Arriaga · soyluisarca.com</span>
+      <span>© 2026 Luis Arca · soyluisarca.com</span>
       <div>
         <a href="#">Privacidad</a>
         <a href="#" style="margin-left:16px;">Términos</a>
@@ -1682,7 +1773,7 @@ const I18N = {
     "products_title": "Productos",
     "products_subtitle": "Experiencias diseñadas para impulsar tu proyecto con IA.",
     "product1_title": "AI Blueprint Day",
-    "product1_badge": "Productivo",
+    "product1_badge": "Low-Cost",
     "product1_desc": "Experiencia que conecta emprendedores que buscan potenciar sus proyectos con herramientas de IA.",
     "product1_detail_1": "6 horas (1 día intensivo)",
     "product1_detail_2": "🧠 Mentalidad y visión",
@@ -1701,6 +1792,7 @@ const I18N = {
     "product2_detail_4": "📊 Monitoreo y optimización",
     "product2_detail_5": "📚 Documentación y entrenamiento",
     "product2_btn": "Agenda tu 1:1 →",
+    "product2_microcopy": "Llamada de 20 min por Zoom. Analizamos tu operación actual y vemos qué procesos delegar a un agente.",
     "product2_price": "Inversión: [Consultar]",
     
     // TRAYECTORIA
@@ -1717,7 +1809,7 @@ const I18N = {
     "traj_3_text": "Arca Point era mi negocio de renta de bicicletas en Bacalar. Marina Yunuem era el club de playa donde trabajaba —y donde aprendí la mayoría de lo que sé sobre operación turística: restaurante, hostal, eventos. Precisamente porque trabajaba ahí pude comenzar Arca Point. Una me dio el conocimiento; la otra, la oportunidad de aplicarlo.",
     "traj_4_year": "2025",
     "traj_4_title": "luarca.ttt",
-    "traj_4_text": "luarca.ttt es la evidencia de que siempre estamos a tiempo de reclamar lo que dejamos atrás. De niño tomaba clases de óleo y dibujo, pero mis papás dejaron de apoyar esa vena creativa y yo dejé de creer que podía. Hasta que un día decidí retomar el pincel —esta vez sobre piel. Cada trazo me recuerda que el detalle, la paciencia y la confianza construyen arte. Y también negocios.",
+    "traj_4_text": "luarca.ttt es la prueba de que siempre estamos a tiempo de reclamar lo que dejamos atrás. De niño tomaba clases de óleo y dibujo, pero mis papás dejaron de apoyar esa vena creativa y yo dejé de creer que podía. Hasta que un día decidí retomar el pincel —esta vez sobre piel. Esa disciplina de trazo milimétrico, paciencia y precisión sobre piel es exactamente la misma que aplico hoy al diseñar arquitecturas de software limpias, automatizaciones robustas y agentes de IA sin errores: un sistema bien trazado no falla en la línea 4.073.",
     "traj_next": "Todo lo que construí converge aquí.",
     
     // CONTACTO
@@ -1733,13 +1825,23 @@ const I18N = {
     "contact_success_title": "¡Mensaje enviado!",
     "contact_success_text": "Luis se pondrá en contacto pronto.",
     
+    // MODAL 1:1
+    "modal1_title": "Diagnóstico de Automatización",
+    "modal1_sub": "3 preguntas para preparar tu sesión. Sin teléfono, solo lo esencial.",
+    "modal1_q1": "¿A qué se dedica tu negocio?",
+    "modal1_q2": "¿Cuál es el proceso que más tiempo te quita hoy y quieres automatizar?",
+    "modal1_q3": "¿Qué herramientas (software/CRMs) usas actualmente en tu día a día?",
+    "modal1_btn": "Agendar en Cal.com →",
+    "modal1_close": "Cerrar",
+    
     // FOOTER
     "footer_about": "De la idea al agente",
     "footer_nav_title": "Navegación",
     "footer_contact_title": "Contacto",
-    "footer_bottom": "© 2026 Luis Arriaga · soyluisarca.com",
+    "footer_bottom": "© 2026 Luis Arca · soyluisarca.com",
     
     // UX
+    "badge_realtch_tooltip": "Real Tech: mi enfoque donde la tecnología se pone al servicio de resultados humanos reales, no al revés.",
     "toggle_lang_es": "ES",
     "toggle_lang_en": "EN"
   },
@@ -1774,7 +1876,7 @@ const I18N = {
     "products_title": "Products",
     "products_subtitle": "Experiences designed to power your project with AI.",
     "product1_title": "AI Blueprint Day",
-    "product1_badge": "Productive",
+    "product1_badge": "Low-Cost",
     "product1_desc": "Experience that connects entrepreneurs seeking to empower their projects with AI tools.",
     "product1_detail_1": "6 hours (1 intensive day)",
     "product1_detail_2": "🧠 Mindset and vision",
@@ -1793,6 +1895,7 @@ const I18N = {
     "product2_detail_4": "📊 Monitoring and optimization",
     "product2_detail_5": "📚 Documentation and training",
     "product2_btn": "Book your 1:1 →",
+    "product2_microcopy": "20-min Zoom call. We analyze your current operation and spot which processes to delegate to an agent.",
     "product2_price": "Investment: [TBD]",
     
     // TRAYECTORIA (EN)
@@ -1809,7 +1912,7 @@ const I18N = {
     "traj_3_text": "Arca Point was my bike rental business in Bacalar. Marina Yunuem was the beach club where I worked —and where I learned most of what I know about tourism operations: restaurant, hostel, events. Precisely because I worked there I could start Arca Point. One gave me the knowledge; the other, the opportunity to apply it.",
     "traj_4_year": "2025",
     "traj_4_title": "luarca.ttt",
-    "traj_4_text": "luarca.ttt is the proof that we are always on time to reclaim what we left behind. As a child I took oil and drawing classes, but my parents stopped supporting that creative vein and I stopped believing I could. Until one day I decided to pick up the brush again —this time on skin. Each stroke reminds me that detail, patience and trust build art. And also businesses.",
+    "traj_4_text": "luarca.ttt is the proof that we're always on time to reclaim what we left behind. As a child I took oil and drawing classes, but my parents stopped supporting that creative vein and I stopped believing I could. Until one day I decided to pick up the brush again —this time on skin. That discipline of millimeter-precise strokes, patience and precision on skin is exactly what I apply today to design clean software architectures, robust automations and error-free AI agents: a well-drawn system doesn't break at line 4,073.",
     "traj_next": "Everything I've built converges here.",
     
     // CONTACTO
@@ -1825,13 +1928,23 @@ const I18N = {
     "contact_success_title": "Message sent!",
     "contact_success_text": "Luis will be in touch soon.",
     
+    // MODAL 1:1
+    "modal1_title": "Automation Diagnosis",
+    "modal1_sub": "3 questions to prep your session. No phone, just the essentials.",
+    "modal1_q1": "What does your business do?",
+    "modal1_q2": "Which process eats most of your time today that you want to automate?",
+    "modal1_q3": "Which tools (software/CRMs) do you use day to day?",
+    "modal1_btn": "Book on Cal.com →",
+    "modal1_close": "Close",
+    
     // FOOTER
     "footer_about": "From idea to agent",
     "footer_nav_title": "Navigation",
     "footer_contact_title": "Contact",
-    "footer_bottom": "© 2026 Luis Arriaga · soyluisarca.com",
+    "footer_bottom": "© 2026 Luis Arca · soyluisarca.com",
     
     // UX
+    "badge_realtch_tooltip": "Real Tech: my approach — technology in service of real human outcomes, not the other way around.",
     "toggle_lang_es": "ES",
     "toggle_lang_en": "EN"
   }
@@ -1889,6 +2002,14 @@ function applyLang(lang) {
     const key = el.getAttribute('data-i18n-placeholder');
     if (I18N[lang] && I18N[lang][key]) {
       el.setAttribute('placeholder', I18N[lang][key]);
+    }
+  });
+
+  // Tooltips bilingües
+  document.querySelectorAll('[data-i18n-title]').forEach(el => {
+    const key = el.getAttribute('data-i18n-title');
+    if (I18N[lang] && I18N[lang][key]) {
+      el.setAttribute('title', I18N[lang][key]);
     }
   });
 }
@@ -1979,12 +2100,48 @@ function setupFormSubmission() {
   });
 }
 
+// Modal 1:1 — Diagnóstico de Automatización
+const CALENDAR_URL = 'https://cal.com/luisarca/automatizacion'; // <-- reemplaza por tu link real (Cal.com o Calendly)
+
+function openDiagnosticoModal() {
+  const modal = document.getElementById('diagnosticoModal');
+  if (modal) modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDiagnosticoModal() {
+  const modal = document.getElementById('diagnosticoModal');
+  if (modal) modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Cerrar con ESC o clic fuera del box
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeDiagnosticoModal();
+});
+document.addEventListener('click', (e) => {
+  const modal = document.getElementById('diagnosticoModal');
+  if (modal && modal.classList.contains('active') && e.target === modal) closeDiagnosticoModal();
+});
+
+function setupDiagnosticoForm() {
+  const form = document.getElementById('diagnosticoForm');
+  if (!form) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Redirección óptima en UX: el usuario ya calificó, lo enviamos directo a agendar.
+    window.open(CALENDAR_URL, '_blank');
+    closeDiagnosticoModal();
+  });
+}
+
 // Inicialización al cargar DOM
 function init() {
   const lang = detectLanguage();
   applyLang(lang);
   initLangToggle();
   setupFormSubmission();
+  setupDiagnosticoForm();
 
   // Navigation links servicios
   document.querySelectorAll('.navbar-links a, .navbar-mobile a, .footer-nav a').forEach(link => {
@@ -2009,6 +2166,32 @@ if (document.readyState === 'loading') {
   init();
 }
 </script>
+
+<!-- ========================================
+     MODAL 1:1 — Diagnóstico de Automatización
+     ======================================== -->
+<div class="modal-overlay" id="diagnosticoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button class="modal-close" type="button" aria-label="Cerrar" onclick="closeDiagnosticoModal()">×</button>
+    <h3 class="modal-title" id="modalTitle" data-i18n="modal1_title">Diagnóstico de Automatización</h3>
+    <p class="modal-sub" data-i18n="modal1_sub">3 preguntas para preparar tu sesión. Sin teléfono, solo lo esencial.</p>
+    <form id="diagnosticoForm" class="modal-form">
+      <div class="form-group">
+        <label data-i18n="modal1_q1">¿A qué se dedica tu negocio?</label>
+        <input type="text" name="negocio" required>
+      </div>
+      <div class="form-group">
+        <label data-i18n="modal1_q2">¿Cuál es el proceso que más tiempo te quita hoy y quieres automatizar?</label>
+        <textarea name="proceso" rows="2" required></textarea>
+      </div>
+      <div class="form-group">
+        <label data-i18n="modal1_q3">¿Qué herramientas (software/CRMs) usas actualmente en tu día a día?</label>
+        <textarea name="herramientas" rows="2" required></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;justify-content:center;" data-i18n="modal1_btn">Agendar en Cal.com →</button>
+    </form>
+  </div>
+</div>
 
 </body>
 </html>
